@@ -172,8 +172,7 @@ impl<I: ?Sized> AnyColumnIndex for I where
     all(feature = "sqlite")
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
+ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
 
 #[cfg(all(
@@ -181,23 +180,6 @@ ColumnIndex<SqliteRow>
     all(feature = "sqlite")
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-
-#[cfg(all(
-    not(any(feature = "mysql", feature = "postgres")),
-    feature = "sqlite"
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "mysql", feature = "postgres")),
-    feature = "sqlite"
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
     I: ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
+
