@@ -71,8 +71,6 @@ pub use rusql_macros::{FromRow, Type};
 #[doc = include_str!("macros/test.md")]
 pub use rusql_macros::test;
 
-#[doc(hidden)]
-pub use rusql_core::test_block_on;
 
 #[cfg(feature = "macros")]
 mod macros;
