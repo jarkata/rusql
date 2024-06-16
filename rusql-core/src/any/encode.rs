@@ -209,13 +209,6 @@ impl<'q, T> AnyEncode<'q> for T where
 ))]
 pub trait AnyEncode<'q>: Encode<'q, MySql> + Type<MySql> {}
 
-#[cfg(all(
-    not(any(feature = "postgres", feature = "sqlite")),
-    all(feature = "mysql")
-))]
-impl<'q, T> AnyEncode<'q> for T where
-    T: Encode<'q, MySql> + Type<MySql>
-{}
 
 #[cfg(all(
     not(any(feature = "postgres", feature = "mysql")),
@@ -262,11 +255,6 @@ pub trait AnyEncode<'q>: Encode<'q, Postgres> + Type<Postgres> {}
 ))]
 impl<'q, T> AnyEncode<'q> for T where T: Encode<'q, Postgres> + Type<Postgres> {}
 
-#[cfg(all(
-    not(any(feature = "postgres", feature = "sqlite")),
-    feature = "mysql"
-))]
-pub trait AnyEncode<'q>: Encode<'q, MySql> + Type<MySql> {}
 
 #[cfg(all(
     not(any(feature = "postgres", feature = "sqlite")),
