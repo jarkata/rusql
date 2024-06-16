@@ -1,6 +1,6 @@
 [package]
 name = "rusql-rt"
-version = "0.6.3"
+version = "0.0.1"
 repository = "https://github.com/launchbadge/rusql"
 license = "MIT OR Apache-2.0"
 description = "Runtime abstraction used by RuSQL, the Rust SQL toolkit. Not intended to be used directly."

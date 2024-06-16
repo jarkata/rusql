@@ -9,7 +9,7 @@ members = [
 
 [package]
 name = "rusql"
-version = "0.6.3"
+version = "0.0.1"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/launchbadge/rusql"
@@ -114,8 +114,8 @@ bstr = ["rusql-core/bstr"]
 git2 = ["rusql-core/git2"]
 
 [dependencies]
-rusql-core = { version = "0.6.3", path = "rusql-core", default-features = false }
-rusql-macros = { version = "0.6.3", path = "rusql-macros", default-features = false, optional = true }
+rusql-core = { version = "0.0.1", path = "rusql-core", default-features = false }
+rusql-macros = { version = "0.0.1", path = "rusql-macros", default-features = false, optional = true }
 
 [dev-dependencies]
 anyhow = "1.0.52"
