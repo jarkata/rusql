@@ -1,0 +1,90 @@
+[package]
+name = "rusql-macros"
+version = "0.6.3"
+repository = "https://github.com/launchbadge/rusql"
+description = "Macros for RuSQL, the rust SQL toolkit. Not intended to be used directly."
+license = "MIT OR Apache-2.0"
+edition = "2021"
+authors = [
+    "Ryan Leckey <leckey.ryan@gmail.com>",
+    "Austin Bonander <austin.bonander@gmail.com>",
+    "Chloe Ross <orangesnowfox@gmail.com>",
+    "Daniel Akhterov <akhterovd@gmail.com>",
+] # daniel@launchbadge.com
+
+[lib]
+proc-macro = true
+
+[features]
+default = ["runtime-tokio-native-tls", "migrate"]
+migrate = ["sha2", "rusql-core/migrate"]
+
+# runtimes
+runtime-actix-native-tls = ["runtime-tokio-native-tls"]
+runtime-async-std-native-tls = [
+    "rusql-core/runtime-async-std-native-tls",
+    "rusql-rt/runtime-async-std-native-tls",
+    "_rt-async-std",
+]
+runtime-tokio-native-tls = [
+    "rusql-core/runtime-tokio-native-tls",
+    "rusql-rt/runtime-tokio-native-tls",
+    "_rt-tokio",
+]
+
+runtime-actix-rustls = ["runtime-tokio-rustls"]
+runtime-async-std-rustls = [
+    "rusql-core/runtime-async-std-rustls",
+    "rusql-rt/runtime-async-std-rustls",
+    "_rt-async-std",
+]
+runtime-tokio-rustls = [
+    "rusql-core/runtime-tokio-rustls",
+    "rusql-rt/runtime-tokio-rustls",
+    "_rt-tokio",
+]
+
+# for conditional compilation
+_rt-async-std = []
+_rt-tokio = []
+
+# offline building support
+offline = ["rusql-core/offline", "hex", "serde", "serde_json", "sha2"]
+
+# database
+mysql = ["rusql-core/mysql"]
+postgres = ["rusql-core/postgres"]
+sqlite = ["rusql-core/sqlite"]
+mssql = ["rusql-core/mssql"]
+
+# type
+bigdecimal = ["rusql-core/bigdecimal"]
+decimal = ["rusql-core/decimal"]
+chrono = ["rusql-core/chrono"]
+time = ["rusql-core/time"]
+ipnetwork = ["rusql-core/ipnetwork"]
+mac_address = ["rusql-core/mac_address"]
+uuid = ["rusql-core/uuid"]
+bit-vec = ["rusql-core/bit-vec"]
+json = ["rusql-core/json", "serde_json"]
+
+[dependencies]
+dotenvy = { version = "0.15.0", default-features = false }
+hex = { version = "0.4.3", optional = true }
+heck = { version = "0.4", features = ["unicode"] }
+either = "1.6.1"
+once_cell = "1.9.0"
+proc-macro2 = { version = "1.0.36", default-features = false }
+rusql-core = { version = "0.6.3", default-features = false, features = ["any"], path = "../rusql-core" }
+rusql-rt = { version = "0.6.3", default-features = false, path = "../rusql-rt" }
+serde = { version = "1.0.132", features = ["derive"], optional = true }
+serde_json = { version = "1.0.73", optional = true }
+sha2 = { version = "0.10.0", optional = true }
+quote = { version = "1.0.14", default-features = false }
+url = { version = "2.2.2", default-features = false }
+
+[dependencies.syn]
+# This is basically default features plus "full" but if they add more defaults later then we don't need to enable those.
+version = "1.0.109"
+default-features = false
+features = ["full", "parsing", "printing", "derive", "clone-impls", "proc-macro"]

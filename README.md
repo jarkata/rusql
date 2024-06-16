@@ -8,16 +8,16 @@
 <br />
 
 <h2>
-Clone From SQLx 0.6.3 ;
+Clone From RuSQL 0.6.3 ;
 For Study And Keep Tiny Functions
 </h2>
 
 <div align="center">
   <!-- Github Actions -->
-  <img src="https://img.shields.io/github/workflow/status/launchbadge/sqlx/SQLx?style=flat-square" alt="actions status" />
+  <img src="https://img.shields.io/github/workflow/status/launchbadge/rusql/RuSQL?style=flat-square" alt="actions status" />
   <!-- Version -->
-  <a href="https://crates.io/crates/sqlx">
-    <img src="https://img.shields.io/crates/v/sqlx.svg?style=flat-square"
+  <a href="https://crates.io/crates/rusql">
+    <img src="https://img.shields.io/crates/v/rusql.svg?style=flat-square"
     alt="Crates.io version" />
   </a>
   <!-- Discord -->
@@ -25,13 +25,13 @@ For Study And Keep Tiny Functions
     <img src="https://img.shields.io/discord/665528275556106240?style=flat-square" alt="chat" />
   </a>
   <!-- Docs -->
-  <a href="https://docs.rs/sqlx">
+  <a href="https://docs.rs/rusql">
     <img src="https://img.shields.io/badge/docs-latest-blue.svg?style=flat-square"
       alt="docs.rs docs" />
   </a>
   <!-- Downloads -->
-  <a href="https://crates.io/crates/sqlx">
-    <img src="https://img.shields.io/crates/d/sqlx.svg?style=flat-square"
+  <a href="https://crates.io/crates/rusql">
+    <img src="https://img.shields.io/crates/d/rusql.svg?style=flat-square"
       alt="Download" />
   </a>
 </div>
@@ -46,7 +46,7 @@ For Study And Keep Tiny Functions
       Usage
     </a>
     <span> | </span>
-    <a href="https://docs.rs/sqlx">
+    <a href="https://docs.rs/rusql">
       Docs
     </a>
   </h4>
@@ -66,11 +66,11 @@ For Study And Keep Tiny Functions
 
 <br />
 
-SQLx is an async, pure Rust<sub>†</sub> SQL crate featuring compile-time checked queries without a DSL.
+RuSQL is an async, pure Rust<sub>†</sub> SQL crate featuring compile-time checked queries without a DSL.
 
 -   **Truly Asynchronous**. Built from the ground-up using async/await for maximum concurrency.
 
--   **Compile-time checked queries** (if you want). See [SQLx is not an ORM](#sqlx-is-not-an-orm).
+-   **Compile-time checked queries** (if you want). See [RuSQL is not an ORM](#rusql-is-not-an-orm).
 
 -   **Database Agnostic**. Support for [PostgreSQL], [MySQL], [SQLite], and [MSSQL].
 
@@ -83,7 +83,7 @@ SQLx is an async, pure Rust<sub>†</sub> SQL crate featuring compile-time check
 † The SQLite driver uses the libsqlite3 C library as SQLite is an embedded database (the only way
 we could be pure Rust for SQLite is by porting _all_ of SQLite to Rust).
 
-†† SQLx uses `#![forbid(unsafe_code)]` unless the `sqlite` feature is enabled. As the SQLite driver interacts
+†† RuSQL uses `#![forbid(unsafe_code)]` unless the `sqlite` feature is enabled. As the SQLite driver interacts
 with C, those interactions are `unsafe`.
 
 </small></small>
@@ -95,13 +95,13 @@ with C, those interactions are `unsafe`.
 
 ---
 
--   Cross-platform. Being native Rust, SQLx will compile anywhere Rust is supported.
+-   Cross-platform. Being native Rust, RuSQL will compile anywhere Rust is supported.
 
--   Built-in connection pooling with `sqlx::Pool`.
+-   Built-in connection pooling with `rusql::Pool`.
 
 -   Row streaming. Data is read asynchronously from the database and decoded on-demand.
 
--   Automatic statement preparation and caching. When using the high-level query API (`sqlx::query`), statements are
+-   Automatic statement preparation and caching. When using the high-level query API (`rusql::query`), statements are
     prepared and cached per-connection.
 
 -   Simple (unprepared) query execution including fetching results into the same `Row` types used by
@@ -117,7 +117,7 @@ with C, those interactions are `unsafe`.
 
 ## Install
 
-SQLx is compatible with the [`async-std`], [`tokio`] and [`actix`] runtimes; and, the [`native-tls`] and [`rustls`] TLS backends. When adding the dependency, you must chose a runtime feature that is `runtime` + `tls`.
+RuSQL is compatible with the [`async-std`], [`tokio`] and [`actix`] runtimes; and, the [`native-tls`] and [`rustls`] TLS backends. When adding the dependency, you must chose a runtime feature that is `runtime` + `tls`.
 
 [`async-std`]: https://github.com/async-rs/async-std
 [`tokio`]: https://github.com/tokio-rs/tokio
@@ -129,9 +129,9 @@ SQLx is compatible with the [`async-std`], [`tokio`] and [`actix`] runtimes; and
 # Cargo.toml
 [dependencies]
 # tokio + rustls
-sqlx = { version = "0.6", features = [ "runtime-tokio-rustls" ] }
+rusql = { version = "0.6", features = [ "runtime-tokio-rustls" ] }
 # async-std + native-tls
-sqlx = { version = "0.6", features = [ "runtime-async-std-native-tls" ] }
+rusql = { version = "0.6", features = [ "runtime-async-std-native-tls" ] }
 ```
 
 <small><small>The runtime and TLS backend not being separate feature sets to select is a workaround for a [Cargo issue](https://github.com/rust-lang/cargo/issues/3494).</small></small>
@@ -185,25 +185,25 @@ sqlx = { version = "0.6", features = [ "runtime-async-std-native-tls" ] }
 -   `tls`: Add support for TLS connections.
 
 -   `offline`: Enables building the macros in offline mode when a live database is not available (such as CI). 
-    -   Requires `sqlx-cli` installed to use. See [sqlx-cli/README.md][readme-offline].
+    -   Requires `rusql-cli` installed to use. See [rusql-cli/README.md][readme-offline].
 
-[readme-offline]: sqlx-cli/README.md#enable-building-in-offline-mode-with-query
+[readme-offline]: rusql-cli/README.md#enable-building-in-offline-mode-with-query
 
-## SQLx is not an ORM!
+## RuSQL is not an ORM!
 
-SQLx supports **compile-time checked queries**. It does not, however, do this by providing a Rust
+RuSQL supports **compile-time checked queries**. It does not, however, do this by providing a Rust
 API or DSL (domain-specific language) for building queries. Instead, it provides macros that take
 regular SQL as an input and ensure that it is valid for your database. The way this works is that
-SQLx connects to your development DB at compile time to have the database itself verify (and return
+RuSQL connects to your development DB at compile time to have the database itself verify (and return
 some info on) your SQL queries. This has some potentially surprising implications:
 
-- Since SQLx never has to parse the SQL string itself, any syntax that the development DB accepts
+- Since RuSQL never has to parse the SQL string itself, any syntax that the development DB accepts
   can be used (including things added by database extensions)
 - Due to the different amount of information databases let you retrieve about queries, the extent of
   SQL verification you get from the query macros depends on the database
 
 **If you are looking for an (asynchronous) ORM,** you can check out [`ormx`] or [`SeaORM`], which is built on top
-of SQLx.
+of RuSQL.
 
 [`ormx`]: https://crates.io/crates/ormx
 [`SeaORM`]: https://github.com/SeaQL/sea-orm
@@ -217,27 +217,27 @@ See the `examples/` folder for more in-depth usage.
 [dependencies]
 # PICK ONE:
 # Async-std:
-sqlx = { version = "0.6", features = [  "runtime-async-std-native-tls", "postgres" ] }
+rusql = { version = "0.6", features = [  "runtime-async-std-native-tls", "postgres" ] }
 async-std = { version = "1", features = [ "attributes" ] }
 
 # Tokio:
-sqlx = { version = "0.6", features = [ "runtime-tokio-native-tls" , "postgres" ] }
+rusql = { version = "0.6", features = [ "runtime-tokio-native-tls" , "postgres" ] }
 tokio = { version = "1", features = ["full"] }
 
 # Actix-web:
-sqlx = { version = "0.6", features = [ "runtime-actix-native-tls" , "postgres" ] }
+rusql = { version = "0.6", features = [ "runtime-actix-native-tls" , "postgres" ] }
 actix-web = "4"
 ```
 
 ```rust
-use sqlx::postgres::PgPoolOptions;
-// use sqlx::mysql::MySqlPoolOptions;
+use rusql::postgres::PgPoolOptions;
+// use rusql::mysql::MySqlPoolOptions;
 // etc.
 
 #[async_std::main]
 // or #[tokio::main]
 // or #[actix_web::main]
-async fn main() -> Result<(), sqlx::Error> {
+async fn main() -> Result<(), rusql::Error> {
     // Create a connection pool
     //  for MySQL, use MySqlPoolOptions::new()
     //  for SQLite, use SqlitePoolOptions::new()
@@ -247,7 +247,7 @@ async fn main() -> Result<(), sqlx::Error> {
         .connect("postgres://postgres:password@localhost/test").await?;
 
     // Make a simple query to return the given parameter (use a question mark `?` instead of `$1` for MySQL)
-    let row: (i64,) = sqlx::query_as("SELECT $1")
+    let row: (i64,) = rusql::query_as("SELECT $1")
         .bind(150_i64)
         .fetch_one(&pool).await?;
 
@@ -262,12 +262,12 @@ async fn main() -> Result<(), sqlx::Error> {
 A single connection can be established using any of the database connection types and calling `connect()`.
 
 ```rust
-use sqlx::Connection;
+use rusql::Connection;
 
 let conn = SqliteConnection::connect("sqlite::memory:").await?;
 ```
 
-Generally, you will want to instead create a connection pool (`sqlx::Pool`) in order for your application to
+Generally, you will want to instead create a connection pool (`rusql::Pool`) in order for your application to
 regulate how many server-side connections it's using.
 
 ```rust
@@ -281,27 +281,27 @@ query plan _cached_, use a binary mode of communication (lower bandwidth and fas
 to avoid SQL injection. Unprepared queries are simple and intended only for use case where a prepared statement
 will not work, such as various database commands (e.g., `PRAGMA` or `SET` or `BEGIN`).
 
-SQLx supports all operations with both types of queries. In SQLx, a `&str` is treated as an unprepared query
+RuSQL supports all operations with both types of queries. In RuSQL, a `&str` is treated as an unprepared query
 and a `Query` or `QueryAs` struct is treated as a prepared query.
 
 ```rust
 // low-level, Executor trait
 conn.execute("BEGIN").await?; // unprepared, simple query
-conn.execute(sqlx::query("DELETE FROM table")).await?; // prepared, cached query
+conn.execute(rusql::query("DELETE FROM table")).await?; // prepared, cached query
 ```
 
 We should prefer to use the high level, `query` interface whenever possible. To make this easier, there are finalizers
 on the type to avoid the need to wrap with an executor.
 
 ```rust
-sqlx::query("DELETE FROM table").execute(&mut conn).await?;
-sqlx::query("DELETE FROM table").execute(&pool).await?;
+rusql::query("DELETE FROM table").execute(&mut conn).await?;
+rusql::query("DELETE FROM table").execute(&pool).await?;
 ```
 
 The `execute` query finalizer returns the number of affected rows, if any, and drops all received results.
 In addition, there are `fetch`, `fetch_one`, `fetch_optional`, and `fetch_all` to receive results.
 
-The `Query` type returned from `sqlx::query` will return `Row<'conn>` from the database. Column values can be accessed
+The `Query` type returned from `rusql::query` will return `Row<'conn>` from the database. Column values can be accessed
 by ordinal or by name with `row.get()`. As the `Row` retains an immutable borrow on the connection, only one
 `Row` may exist at a time.
 
@@ -311,7 +311,7 @@ The `fetch` query finalizer returns a stream-like type that iterates through the
 // provides `try_next`
 use futures::TryStreamExt;
 
-let mut rows = sqlx::query("SELECT * FROM users WHERE email = ?")
+let mut rows = rusql::query("SELECT * FROM users WHERE email = ?")
     .bind(email)
     .fetch(&mut conn);
 
@@ -324,7 +324,7 @@ while let Some(row) = rows.try_next().await? {
 To assist with mapping the row into a domain type, there are two idioms that may be used:
 
 ```rust
-let mut stream = sqlx::query("SELECT * FROM users")
+let mut stream = rusql::query("SELECT * FROM users")
     .map(|row: PgRow| {
         // map the row into a user-defined domain type
     })
@@ -332,10 +332,10 @@ let mut stream = sqlx::query("SELECT * FROM users")
 ```
 
 ```rust
-#[derive(sqlx::FromRow)]
+#[derive(rusql::FromRow)]
 struct User { name: String, id: i64 }
 
-let mut stream = sqlx::query_as::<_, User>("SELECT * FROM users WHERE email = ? OR name = ?")
+let mut stream = rusql::query_as::<_, User>("SELECT * FROM users WHERE email = ? OR name = ?")
     .bind(user_email)
     .bind(user_name)
     .fetch(&mut conn);
@@ -346,11 +346,11 @@ from the database.
 
 ### Compile-time verification
 
-We can use the macro, `sqlx::query!` to achieve compile-time syntactic and semantic verification of the SQL, with
+We can use the macro, `rusql::query!` to achieve compile-time syntactic and semantic verification of the SQL, with
 an output to an anonymous record type where each SQL column is a Rust field (using raw identifiers where needed).
 
 ```rust
-let countries = sqlx::query!(
+let countries = rusql::query!(
         "
 SELECT country, COUNT(*) as count
 FROM users
@@ -397,7 +397,7 @@ mostly identical except that you can name the output type.
 // no traits are needed
 struct Country { country: String, count: i64 }
 
-let countries = sqlx::query_as!(Country,
+let countries = rusql::query_as!(Country,
         "
 SELECT country, COUNT(*) as count
 FROM users
@@ -415,8 +415,8 @@ WHERE organization = ?
 
 To avoid the need of having a development database around to compile the project even when no
 modifications (to the database-accessing parts of the code) are done, you can enable "offline mode"
-to cache the results of the SQL query analysis using the `sqlx` command-line tool. See
-[sqlx-cli/README.md](./sqlx-cli/README.md#enable-building-in-offline-mode-with-query).
+to cache the results of the SQL query analysis using the `rusql` command-line tool. See
+[rusql-cli/README.md](./rusql-cli/README.md#enable-building-in-offline-mode-with-query).
 
 Compile time verified queries do quite a bit of work at compile time. Incremental actions like
 `cargo check` and `cargo build` can be significantly faster when using an optimized build by
@@ -424,7 +424,7 @@ putting the following in your `Cargo.toml` (More information in the
 [Profiles section](https://doc.rust-lang.org/cargo/reference/profiles.html) of The Cargo Book)
 
 ```toml
-[profile.dev.package.sqlx-macros]
+[profile.dev.package.rusql-macros]
 opt-level = 3
 ```
 
@@ -436,7 +436,7 @@ so we now use the `dotenvy` crate instead. The file format is the same.
 This crate uses `#![forbid(unsafe_code)]` to ensure everything is implemented in 100% Safe Rust.
 
 If the `sqlite` feature is enabled, this is downgraded to `#![deny(unsafe_code)]` with `#![allow(unsafe_code)]` on the
-`sqlx::sqlite` module. There are several places where we interact with the C SQLite API. We try to document each call for the invariants we're assuming. We absolutely welcome auditing of, and feedback on, our unsafe code usage.
+`rusql::sqlite` module. There are several places where we interact with the C SQLite API. We try to document each call for the invariants we're assuming. We absolutely welcome auditing of, and feedback on, our unsafe code usage.
 
 ## License
 

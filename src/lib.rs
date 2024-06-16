@@ -7,33 +7,33 @@ compile_error!(
      and 'tls' is one of 'native-tls' and 'rustls'."
 );
 
-pub use sqlx_core::acquire::Acquire;
-pub use sqlx_core::arguments::{Arguments, IntoArguments};
-pub use sqlx_core::column::Column;
-pub use sqlx_core::column::ColumnIndex;
-pub use sqlx_core::connection::{ConnectOptions, Connection};
-pub use sqlx_core::database::{self, Database};
-pub use sqlx_core::describe::Describe;
-pub use sqlx_core::executor::{Execute, Executor};
-pub use sqlx_core::from_row::FromRow;
-pub use sqlx_core::pool::{self, Pool};
-pub use sqlx_core::query::{query, query_with};
-pub use sqlx_core::query_as::{query_as, query_as_with};
-pub use sqlx_core::query_builder::{self, QueryBuilder};
-pub use sqlx_core::query_scalar::{query_scalar, query_scalar_with};
-pub use sqlx_core::row::Row;
-pub use sqlx_core::statement::Statement;
-pub use sqlx_core::transaction::{Transaction, TransactionManager};
-pub use sqlx_core::type_info::TypeInfo;
-pub use sqlx_core::types::Type;
-pub use sqlx_core::value::{Value, ValueRef};
-pub use sqlx_core::Either;
+pub use rusql_core::acquire::Acquire;
+pub use rusql_core::arguments::{Arguments, IntoArguments};
+pub use rusql_core::column::Column;
+pub use rusql_core::column::ColumnIndex;
+pub use rusql_core::connection::{ConnectOptions, Connection};
+pub use rusql_core::database::{self, Database};
+pub use rusql_core::describe::Describe;
+pub use rusql_core::executor::{Execute, Executor};
+pub use rusql_core::from_row::FromRow;
+pub use rusql_core::pool::{self, Pool};
+pub use rusql_core::query::{query, query_with};
+pub use rusql_core::query_as::{query_as, query_as_with};
+pub use rusql_core::query_builder::{self, QueryBuilder};
+pub use rusql_core::query_scalar::{query_scalar, query_scalar_with};
+pub use rusql_core::row::Row;
+pub use rusql_core::statement::Statement;
+pub use rusql_core::transaction::{Transaction, TransactionManager};
+pub use rusql_core::type_info::TypeInfo;
+pub use rusql_core::types::Type;
+pub use rusql_core::value::{Value, ValueRef};
+pub use rusql_core::Either;
 
 #[doc(inline)]
-pub use sqlx_core::error::{self, Error, Result};
+pub use rusql_core::error::{self, Error, Result};
 
 #[cfg(feature = "migrate")]
-pub use sqlx_core::migrate;
+pub use rusql_core::migrate;
 
 #[cfg(all(
     any(
@@ -44,44 +44,44 @@ pub use sqlx_core::migrate;
     ),
     feature = "any"
 ))]
-pub use sqlx_core::any::{self, Any, AnyConnection, AnyExecutor, AnyPool};
+pub use rusql_core::any::{self, Any, AnyConnection, AnyExecutor, AnyPool};
 
 #[cfg(feature = "mysql")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mysql")))]
-pub use sqlx_core::mysql::{self, MySql, MySqlConnection, MySqlExecutor, MySqlPool};
+pub use rusql_core::mysql::{self, MySql, MySqlConnection, MySqlExecutor, MySqlPool};
 
 #[cfg(feature = "mssql")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mssql")))]
-pub use sqlx_core::mssql::{self, Mssql, MssqlConnection, MssqlExecutor, MssqlPool};
+pub use rusql_core::mssql::{self, Mssql, MssqlConnection, MssqlExecutor, MssqlPool};
 
 #[cfg(feature = "postgres")]
 #[cfg_attr(docsrs, doc(cfg(feature = "postgres")))]
-pub use sqlx_core::postgres::{self, PgConnection, PgExecutor, PgPool, Postgres};
+pub use rusql_core::postgres::{self, PgConnection, PgExecutor, PgPool, Postgres};
 
 #[cfg(feature = "sqlite")]
 #[cfg_attr(docsrs, doc(cfg(feature = "sqlite")))]
-pub use sqlx_core::sqlite::{self, Sqlite, SqliteConnection, SqliteExecutor, SqlitePool};
+pub use rusql_core::sqlite::{self, Sqlite, SqliteConnection, SqliteExecutor, SqlitePool};
 
 #[cfg(feature = "macros")]
 #[doc(hidden)]
-pub extern crate sqlx_macros;
+pub extern crate rusql_macros;
 
 // derives
 #[cfg(feature = "macros")]
 #[doc(hidden)]
-pub use sqlx_macros::{FromRow, Type};
+pub use rusql_macros::{FromRow, Type};
 
 // We can't do our normal facade approach with an attribute, but thankfully we can now
 // have docs out-of-line quite easily.
 #[doc = include_str!("macros/test.md")]
-pub use sqlx_macros::test;
+pub use rusql_macros::test;
 
 #[doc(hidden)]
 #[cfg(feature = "migrate")]
-pub use sqlx_core::testing;
+pub use rusql_core::testing;
 
 #[doc(hidden)]
-pub use sqlx_core::test_block_on;
+pub use rusql_core::test_block_on;
 
 #[cfg(feature = "macros")]
 mod macros;
@@ -107,40 +107,40 @@ pub mod ty_match;
 ///
 /// [`Type`]: types::Type
 pub mod types {
-    pub use sqlx_core::types::*;
+    pub use rusql_core::types::*;
 
     #[cfg(feature = "macros")]
     #[doc(hidden)]
-    pub use sqlx_macros::Type;
+    pub use rusql_macros::Type;
 }
 
 /// Provides [`Encode`](encode::Encode) for encoding values for the database.
 pub mod encode {
-    pub use sqlx_core::encode::{Encode, IsNull};
+    pub use rusql_core::encode::{Encode, IsNull};
 
     #[cfg(feature = "macros")]
     #[doc(hidden)]
-    pub use sqlx_macros::Encode;
+    pub use rusql_macros::Encode;
 }
 
 pub use self::encode::Encode;
 
 /// Provides [`Decode`](decode::Decode) for decoding values from the database.
 pub mod decode {
-    pub use sqlx_core::decode::Decode;
+    pub use rusql_core::decode::Decode;
 
     #[cfg(feature = "macros")]
     #[doc(hidden)]
-    pub use sqlx_macros::Decode;
+    pub use rusql_macros::Decode;
 }
 
 pub use self::decode::Decode;
 
 /// Types and traits for the `query` family of functions and macros.
 pub mod query {
-    pub use sqlx_core::query::{Map, Query};
-    pub use sqlx_core::query_as::QueryAs;
-    pub use sqlx_core::query_scalar::QueryScalar;
+    pub use rusql_core::query::{Map, Query};
+    pub use rusql_core::query_as::QueryAs;
+    pub use rusql_core::query_scalar::QueryScalar;
 }
 
 /// Convenience re-export of common traits.
@@ -160,5 +160,5 @@ pub mod prelude {
 
 #[doc(hidden)]
 #[inline(always)]
-#[deprecated = "`#[sqlx(rename = \"...\")]` is now `#[sqlx(type_name = \"...\")`"]
+#[deprecated = "`#[rusql(rename = \"...\")]` is now `#[rusql(type_name = \"...\")`"]
 pub fn _rename() {}

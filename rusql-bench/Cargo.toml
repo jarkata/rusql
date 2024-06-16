@@ -1,0 +1,49 @@
+[package]
+name = "rusql-bench"
+version = "0.1.0"
+authors = ["Austin Bonander <austin@launchbadge.com>"]
+edition = "2021"
+publish = false
+
+[features]
+runtime-actix-native-tls = ["runtime-tokio-native-tls"]
+runtime-async-std-native-tls = [
+    "rusql/runtime-async-std-native-tls",
+    "rusql-rt/runtime-async-std-native-tls",
+]
+runtime-tokio-native-tls = [
+    "rusql/runtime-tokio-native-tls",
+    "rusql-rt/runtime-tokio-native-tls",
+]
+
+runtime-actix-rustls = ["runtime-tokio-rustls"]
+runtime-async-std-rustls = [
+    "rusql/runtime-async-std-rustls",
+    "rusql-rt/runtime-async-std-rustls",
+]
+runtime-tokio-rustls = [
+    "rusql/runtime-tokio-rustls",
+    "rusql-rt/runtime-tokio-rustls",
+]
+
+postgres = ["rusql/postgres"]
+sqlite = ["rusql/sqlite"]
+
+[dependencies]
+criterion = "0.3.3"
+dotenvy = "0.15.0"
+once_cell = "1.4"
+rusql = { version = "0.6", path = "../", default-features = false, features = ["macros"] }
+rusql-rt = { version = "0.6", path = "../rusql-rt", default-features = false }
+
+chrono = "0.4.19"
+
+[[bench]]
+name = "pg_pool"
+harness = false
+required-features = ["postgres"]
+
+[[bench]]
+name = "sqlite_fetch_all"
+harness = false
+required-features = ["sqlite"]

@@ -1,9 +1,9 @@
-SQLx Frequently Asked Questions
+RuSQL Frequently Asked Questions
 ===============================
 
-### What database versions does SQLx support?
+### What database versions does RuSQL support?
 
-This is a difficult question to answer because it depends on which features of the databases are used and when those features were introduced. SQL databases tend to be very strongly backwards-compatible so it's likely that SQLx will work with some very old versions. 
+This is a difficult question to answer because it depends on which features of the databases are used and when those features were introduced. SQL databases tend to be very strongly backwards-compatible so it's likely that RuSQL will work with some very old versions. 
 
 TLS support is one of the features that ages most quickly with databases, since old SSL/TLS versions are deprecated over time as they become insecure due to weaknesses being discovered; this is especially important to consider when using RusTLS, as it only supports the latest TLS version for security reasons (see the question below mentioning RusTLS for details).
 
@@ -15,10 +15,10 @@ As a rule, however, we only officially support the range of versions for each da
     * However, its Wikipedia page helpfully tracks its versions and their announced EOL dates: https://en.wikipedia.org/wiki/MySQL#Release_history
 * SQLite is easy as only SQLite 3 is supported and the current version depends on the version of the `libsqlite3-sys` crate being used.
 
-For each database and where applicable, we test against the latest and oldest versions that we intend to support. You can see the current versions being tested against by looking at our CI config: https://github.com/launchbadge/sqlx/blob/main/.github/workflows/sqlx.yml#L168
+For each database and where applicable, we test against the latest and oldest versions that we intend to support. You can see the current versions being tested against by looking at our CI config: https://github.com/launchbadge/rusql/blob/main/.github/workflows/rusql.yml#L168
 
 -------------------------------------------------------------------
-### What versions of Rust does SQLx support? What is SQLx's MSRV\*?
+### What versions of Rust does RuSQL support? What is RuSQL's MSRV\*?
 
 Officially, we will only ever support the latest stable version of Rust. 
 It's just not something we consider to be worth keeping track of, given the current state of tooling.
@@ -34,7 +34,7 @@ stabilized that we want to use (Generic Associated Types and Async Traits, to na
 be utilizing when they're available, but that will be a major refactor with breaking API changes 
 which will then coincide with a major release.
 
-Thus, it is likely that a given SQLx release _will_ work with older versions of Rust. However,
+Thus, it is likely that a given RuSQL release _will_ work with older versions of Rust. However,
 we make no guarantees about which exact versions it will work with besides the latest stable version,
 and we don't factor MSRV bumps into our semantic versioning.
 
@@ -61,7 +61,7 @@ The ideal solution, of course, is to upgrade your database server to a version t
 If you're running a third-party database that talks one of these protocols, consult its documentation for supported TLS versions.
 
 If you're stuck on an outdated version, which is unfortunate but tends to happen for one reason or another, try switching to the corresponding
-`runtime-<tokio, async-std, actix>-native-tls` feature for SQLx. That will use the system APIs for TLS which tend to have much wider support.
+`runtime-<tokio, async-std, actix>-native-tls` feature for RuSQL. That will use the system APIs for TLS which tend to have much wider support.
 See [the `native-tls` crate docs](https://docs.rs/native-tls/latest/native_tls/) for details.
 
 The `CorruptMessage` error occurs in similar situations and many users have had success with switching to `-native-tls` to get around it.
@@ -73,8 +73,8 @@ https://github.com/rustls/rustls/issues/893
 ### How can I do a `SELECT ... WHERE foo IN (...)` query?
 
 
-In the future SQLx will support binding arrays as a comma-separated list for every database,
-but unfortunately there's no general solution for that currently in SQLx itself.
+In the future RuSQL will support binding arrays as a comma-separated list for every database,
+but unfortunately there's no general solution for that currently in RuSQL itself.
 You would need to manually generate the query, at which point it
 cannot be used with the macros.
 
@@ -84,7 +84,7 @@ However, **in Postgres** you can work around this limitation by binding the arra
 let db: PgPool = /* ... */;
 let foo_ids: Vec<i64> = vec![/* ... */];
 
-let foos = sqlx::query!(
+let foos = rusql::query!(
     "SELECT * FROM foo WHERE id = ANY($1)",
     // a bug of the parameter typechecking code requires all array parameters to be slices
     &foo_ids[..]
@@ -93,7 +93,7 @@ let foos = sqlx::query!(
     .await?;
 ```
 
-Even when SQLx gains generic placeholder expansion for arrays, this will still be the optimal way to do it for Postgres,
+Even when RuSQL gains generic placeholder expansion for arrays, this will still be the optimal way to do it for Postgres,
 as comma-expansion means each possible length of the array generates a different query 
 (and represents a combinatorial explosion if more than one array is used).
 
@@ -113,7 +113,7 @@ See also: [Postgres Manual, Section 9.24: Row and Array Comparisons](https://www
 -----
 ### How can I bind an array to a `VALUES()` clause? How can I do bulk inserts?
 
-Like the above, SQLx currently does not support this in the general case right now but will in the future.
+Like the above, RuSQL currently does not support this in the general case right now but will in the future.
 
 However, **Postgres** also has a feature to save the day here! You can pass an array to `UNNEST()` and
 it will treat it as a temporary table:
@@ -121,7 +121,7 @@ it will treat it as a temporary table:
 ```rust
 let foo_texts: Vec<String> = vec![/* ... */];
 
-sqlx::query!(
+rusql::query!(
     // because `UNNEST()` is a generic function, Postgres needs the cast on the parameter here
     // in order to know what type to expect there when preparing the query
     "INSERT INTO foo(text_column) SELECT * FROM UNNEST($1::text[])",
@@ -141,7 +141,7 @@ let foo_texts: Vec<String> = vec![/* ... */];
 let foo_bools: Vec<bool> = vec![/* ... */];
 let foo_ints: Vec<i64> = vec![/* ... */];
 
-sqlx::query!(
+rusql::query!(
     "
         INSERT INTO foo(text_column, bool_column, int_column) 
         SELECT * FROM UNNEST($1::text[], $2::bool[], $3::int8[])
@@ -185,20 +185,20 @@ so the macros can just read that file instead of talking to a database.
 
 See the following:
 
-* [the docs for `query!()`](https://docs.rs/sqlx/0.5.5/sqlx/macro.query.html#offline-mode-requires-the-offline-feature)
-* [the README for `sqlx-cli`](sqlx-cli/README.md#enable-building-in-offline-mode-with-query)
+* [the docs for `query!()`](https://docs.rs/rusql/0.5.5/rusql/macro.query.html#offline-mode-requires-the-offline-feature)
+* [the README for `rusql-cli`](rusql-cli/README.md#enable-building-in-offline-mode-with-query)
 
-To keep `sqlx-data.json` up-to-date you need to run `cargo sqlx prepare` before every commit that
+To keep `rusql-data.json` up-to-date you need to run `cargo rusql prepare` before every commit that
 adds or changes a query; you can do this with a Git pre-commit hook:
 
 ```shell
-$ echo "cargo sqlx prepare > /dev/null 2>&1; git add sqlx-data.json > /dev/null" > .git/hooks/pre-commit 
+$ echo "cargo rusql prepare > /dev/null 2>&1; git add rusql-data.json > /dev/null" > .git/hooks/pre-commit 
 ```
 
 Note that this may make committing take some time as it'll cause your project to be recompiled, and
-as an ergonomic choice it does _not_ block committing if `cargo sqlx prepare` fails.
+as an ergonomic choice it does _not_ block committing if `cargo rusql prepare` fails.
 
-We're working on a way for the macros to save their data to the filesystem automatically which should be part of SQLx 0.6,
+We're working on a way for the macros to save their data to the filesystem automatically which should be part of RuSQL 0.6,
 so your pre-commit hook would then just need to stage the changed files.
 
 ----
@@ -227,11 +227,11 @@ The SQLite driver will pull the bytecode of the prepared statement and step thro
 that produce a null value for any column in the output.
 
 ---
-### Why can't SQLx just look at my database schema/migrations and parse the SQL itself?
+### Why can't RuSQL just look at my database schema/migrations and parse the SQL itself?
 
 Take a moment and think of the effort that would be required to do that.
 
-To implement this for a single database driver, SQLx would need to:
+To implement this for a single database driver, RuSQL would need to:
 
 * know how to parse SQL, and not just standard SQL but the specific dialect of that particular database
 * know how to analyze and typecheck SQL queries in the context of the original schema
@@ -251,18 +251,18 @@ Even Sisyphus would pity us.
 
 ----
 
-### Why does my project using sqlx query macros not build on docs.rs?
+### Why does my project using rusql query macros not build on docs.rs?
 
-Docs.rs doesn't have access to your database, so it needs to be provided a `sqlx-data.json` file and be instructed to set the `SQLX_OFFLINE` environment variable to true while compiling your project. Luckily for us, docs.rs creates a `DOCS_RS` environment variable that we can access in a custom build script to achieve this functionality.
+Docs.rs doesn't have access to your database, so it needs to be provided a `rusql-data.json` file and be instructed to set the `RUSQL_OFFLINE` environment variable to true while compiling your project. Luckily for us, docs.rs creates a `DOCS_RS` environment variable that we can access in a custom build script to achieve this functionality.
 
-To do so, first, make sure that you have run `cargo sqlx prepare` to generate a `sqlx-data.json` file in your project.
+To do so, first, make sure that you have run `cargo rusql prepare` to generate a `rusql-data.json` file in your project.
 
 Next, create a file called `build.rs` in the root of your project directory (at the same level as `Cargo.toml`). Add the following code to it:
 ```rs
 fn main() {
-    // When building in docs.rs, we want to set SQLX_OFFLINE mode to true
+    // When building in docs.rs, we want to set RUSQL_OFFLINE mode to true
     if std::env::var_os("DOCS_RS").is_some() {
-        println!("cargo:rustc-env=SQLX_OFFLINE=true");
+        println!("cargo:rustc-env=RUSQL_OFFLINE=true");
     }
 }
 ```

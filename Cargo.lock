@@ -2000,6 +2000,150 @@ dependencies = [
 ]
 
 [[package]]
+name = "rusql"
+version = "0.6.3"
+dependencies = [
+ "anyhow",
+ "async-std",
+ "dotenvy",
+ "env_logger",
+ "futures",
+ "hex",
+ "libsqlite3-sys",
+ "paste",
+ "rand 0.8.5",
+ "rand_xoshiro",
+ "rusql-core",
+ "rusql-macros",
+ "rusql-rt",
+ "serde",
+ "serde_json",
+ "tempdir",
+ "time 0.3.20",
+ "tokio",
+ "trybuild",
+ "url",
+]
+
+[[package]]
+name = "rusql-bench"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "criterion",
+ "dotenvy",
+ "once_cell",
+ "rusql",
+ "rusql-rt",
+]
+
+[[package]]
+name = "rusql-core"
+version = "0.6.3"
+dependencies = [
+ "ahash 0.7.6",
+ "atoi",
+ "base64 0.13.1",
+ "bigdecimal",
+ "bit-vec",
+ "bitflags",
+ "bstr",
+ "byteorder",
+ "bytes",
+ "chrono",
+ "crc",
+ "crossbeam-queue",
+ "digest",
+ "dirs",
+ "dotenvy",
+ "either",
+ "encoding_rs",
+ "event-listener",
+ "flume",
+ "futures-channel",
+ "futures-core",
+ "futures-executor",
+ "futures-intrusive",
+ "futures-util",
+ "generic-array",
+ "git2",
+ "hashlink",
+ "hex",
+ "hkdf",
+ "hmac",
+ "indexmap",
+ "ipnetwork",
+ "itoa",
+ "libc",
+ "libsqlite3-sys",
+ "log",
+ "mac_address",
+ "md-5",
+ "memchr",
+ "num-bigint",
+ "once_cell",
+ "paste",
+ "percent-encoding",
+ "rand 0.8.5",
+ "regex",
+ "rsa",
+ "rusql",
+ "rusql-rt",
+ "rust_decimal",
+ "rustls",
+ "rustls-pemfile",
+ "serde",
+ "serde_json",
+ "sha1",
+ "sha2",
+ "smallvec",
+ "sqlformat",
+ "stringprep",
+ "thiserror",
+ "time 0.3.20",
+ "tokio",
+ "tokio-stream",
+ "url",
+ "uuid",
+ "webpki-roots",
+ "whoami",
+]
+
+[[package]]
+name = "rusql-macros"
+version = "0.6.3"
+dependencies = [
+ "dotenvy",
+ "either",
+ "heck",
+ "hex",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "rusql-core",
+ "rusql-rt",
+ "serde",
+ "serde_json",
+ "sha2",
+ "syn 1.0.109",
+ "url",
+]
+
+[[package]]
+name = "rusql-rt"
+version = "0.6.3"
+dependencies = [
+ "async-native-tls",
+ "async-std",
+ "futures-rustls",
+ "native-tls",
+ "once_cell",
+ "tokio",
+ "tokio-native-tls",
+ "tokio-rustls",
+]
+
+[[package]]
 name = "rust_decimal"
 version = "1.29.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2274,150 +2418,6 @@ dependencies = [
  "itertools",
  "nom",
  "unicode_categories",
-]
-
-[[package]]
-name = "sqlx"
-version = "0.6.3"
-dependencies = [
- "anyhow",
- "async-std",
- "dotenvy",
- "env_logger",
- "futures",
- "hex",
- "libsqlite3-sys",
- "paste",
- "rand 0.8.5",
- "rand_xoshiro",
- "serde",
- "serde_json",
- "sqlx-core",
- "sqlx-macros",
- "sqlx-rt",
- "tempdir",
- "time 0.3.20",
- "tokio",
- "trybuild",
- "url",
-]
-
-[[package]]
-name = "sqlx-bench"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "criterion",
- "dotenvy",
- "once_cell",
- "sqlx",
- "sqlx-rt",
-]
-
-[[package]]
-name = "sqlx-core"
-version = "0.6.3"
-dependencies = [
- "ahash 0.7.6",
- "atoi",
- "base64 0.13.1",
- "bigdecimal",
- "bit-vec",
- "bitflags",
- "bstr",
- "byteorder",
- "bytes",
- "chrono",
- "crc",
- "crossbeam-queue",
- "digest",
- "dirs",
- "dotenvy",
- "either",
- "encoding_rs",
- "event-listener",
- "flume",
- "futures-channel",
- "futures-core",
- "futures-executor",
- "futures-intrusive",
- "futures-util",
- "generic-array",
- "git2",
- "hashlink",
- "hex",
- "hkdf",
- "hmac",
- "indexmap",
- "ipnetwork",
- "itoa",
- "libc",
- "libsqlite3-sys",
- "log",
- "mac_address",
- "md-5",
- "memchr",
- "num-bigint",
- "once_cell",
- "paste",
- "percent-encoding",
- "rand 0.8.5",
- "regex",
- "rsa",
- "rust_decimal",
- "rustls",
- "rustls-pemfile",
- "serde",
- "serde_json",
- "sha1",
- "sha2",
- "smallvec",
- "sqlformat",
- "sqlx",
- "sqlx-rt",
- "stringprep",
- "thiserror",
- "time 0.3.20",
- "tokio",
- "tokio-stream",
- "url",
- "uuid",
- "webpki-roots",
- "whoami",
-]
-
-[[package]]
-name = "sqlx-macros"
-version = "0.6.3"
-dependencies = [
- "dotenvy",
- "either",
- "heck",
- "hex",
- "once_cell",
- "proc-macro2",
- "quote",
- "serde",
- "serde_json",
- "sha2",
- "sqlx-core",
- "sqlx-rt",
- "syn 1.0.109",
- "url",
-]
-
-[[package]]
-name = "sqlx-rt"
-version = "0.6.3"
-dependencies = [
- "async-native-tls",
- "async-std",
- "futures-rustls",
- "native-tls",
- "once_cell",
- "tokio",
- "tokio-native-tls",
- "tokio-rustls",
 ]
 
 [[package]]

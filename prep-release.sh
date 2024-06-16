@@ -9,8 +9,8 @@ then
   exit 1
 fi
 
-cargo set-version -p sqlx-rt "$VERSION"
-cargo set-version -p sqlx-core "$VERSION"
-cargo set-version -p sqlx-macros "$VERSION"
-cargo set-version -p sqlx "$VERSION"
-cargo set-version -p sqlx-cli "$VERSION"
+cargo set-version -p rusql-rt "$VERSION"
+cargo set-version -p rusql-core "$VERSION"
+cargo set-version -p rusql-macros "$VERSION"
+cargo set-version -p rusql "$VERSION"
+cargo set-version -p rusql-cli "$VERSION"

@@ -23,7 +23,7 @@ but discussion can be found in [issue #2418].
 As of this release, the `0.7` release is in alpha and so development is no longer occurring against `0.6`.
 This fix will be forward-ported to `0.7`.
 
-[issue #2418]: https://github.com/launchbadge/sqlx/issues/2418
+[issue #2418]: https://github.com/launchbadge/rusql/issues/2418
 
 ## 0.6.2 - 2022-09-14
 
@@ -46,8 +46,8 @@ This fix will be forward-ported to `0.7`.
 
 ### Fixed
 * [[#1991]]: Ensure migration progress is not lost for Postgres, MySQL and SQLite. [[@crepererum]]
-* [[#2023]]: Fix expansion of `#[sqlx(flatten)]` for `FromRow` derive [[@RustyYato]]
-* [[#2028]]: Use fully qualified path when forwarding to `#[test]` from `#[sqlx::test]` [[@alexander-jackson]]
+* [[#2023]]: Fix expansion of `#[rusql(flatten)]` for `FromRow` derive [[@RustyYato]]
+* [[#2028]]: Use fully qualified path when forwarding to `#[test]` from `#[rusql::test]` [[@alexander-jackson]]
 * [[#2040]]: Fix typo in `FromRow` docs [[@zlidner]]
 * [[#2046]]: added flag for PIPES_AS_CONCAT connection setting for MySQL to fix #2034 [[@marcustut]]
 * [[#2055]]: Use unlock notify also on `sqlite3_exec`  [[@madadam]]
@@ -60,36 +60,36 @@ This fix will be forward-ported to `0.7`.
 * [[#2081]]: close unnamed portal after each executed extended query [[@DXist]]
 * [[#2086]]: PgHasArrayType for transparent types fix. [[@Wopple]]
     * NOTE: this is a breaking change and has been postponed to 0.7.0.
-* [[#2089]]: fix: Remove default chrono dep on time for sqlx-cli [[@TravisWhitehead]]
+* [[#2089]]: fix: Remove default chrono dep on time for rusql-cli [[@TravisWhitehead]]
 * [[#2091]]: Sqlite explain plan log efficiency [[@tyrelr]]
 
-[0.6.2-prs]: https://github.com/launchbadge/sqlx/pulls?q=is%3Apr+is%3Aclosed+merged%3A2022-08-04..2022-09-14+
+[0.6.2-prs]: https://github.com/launchbadge/rusql/pulls?q=is%3Apr+is%3Aclosed+merged%3A2022-08-04..2022-09-14+
 
-[#1081]: https://github.com/launchbadge/sqlx/pull/1081
-[#1991]: https://github.com/launchbadge/sqlx/pull/1991
-[#2014]: https://github.com/launchbadge/sqlx/pull/2014
-[#2023]: https://github.com/launchbadge/sqlx/pull/2023
-[#2025]: https://github.com/launchbadge/sqlx/pull/2025
-[#2028]: https://github.com/launchbadge/sqlx/pull/2028
-[#2040]: https://github.com/launchbadge/sqlx/pull/2040
-[#2046]: https://github.com/launchbadge/sqlx/pull/2046
-[#2052]: https://github.com/launchbadge/sqlx/pull/2052
-[#2053]: https://github.com/launchbadge/sqlx/pull/2053
-[#2055]: https://github.com/launchbadge/sqlx/pull/2055
-[#2056]: https://github.com/launchbadge/sqlx/pull/2056
-[#2057]: https://github.com/launchbadge/sqlx/pull/2057
-[#2058]: https://github.com/launchbadge/sqlx/pull/2058
-[#2062]: https://github.com/launchbadge/sqlx/pull/2062
-[#2063]: https://github.com/launchbadge/sqlx/pull/2063
-[#2067]: https://github.com/launchbadge/sqlx/pull/2067
-[#2069]: https://github.com/launchbadge/sqlx/pull/2069
-[#2071]: https://github.com/launchbadge/sqlx/pull/2071
-[#2072]: https://github.com/launchbadge/sqlx/pull/2072
-[#2074]: https://github.com/launchbadge/sqlx/pull/2074
-[#2081]: https://github.com/launchbadge/sqlx/pull/2081
-[#2086]: https://github.com/launchbadge/sqlx/pull/2086
-[#2089]: https://github.com/launchbadge/sqlx/pull/2089
-[#2091]: https://github.com/launchbadge/sqlx/pull/2091
+[#1081]: https://github.com/launchbadge/rusql/pull/1081
+[#1991]: https://github.com/launchbadge/rusql/pull/1991
+[#2014]: https://github.com/launchbadge/rusql/pull/2014
+[#2023]: https://github.com/launchbadge/rusql/pull/2023
+[#2025]: https://github.com/launchbadge/rusql/pull/2025
+[#2028]: https://github.com/launchbadge/rusql/pull/2028
+[#2040]: https://github.com/launchbadge/rusql/pull/2040
+[#2046]: https://github.com/launchbadge/rusql/pull/2046
+[#2052]: https://github.com/launchbadge/rusql/pull/2052
+[#2053]: https://github.com/launchbadge/rusql/pull/2053
+[#2055]: https://github.com/launchbadge/rusql/pull/2055
+[#2056]: https://github.com/launchbadge/rusql/pull/2056
+[#2057]: https://github.com/launchbadge/rusql/pull/2057
+[#2058]: https://github.com/launchbadge/rusql/pull/2058
+[#2062]: https://github.com/launchbadge/rusql/pull/2062
+[#2063]: https://github.com/launchbadge/rusql/pull/2063
+[#2067]: https://github.com/launchbadge/rusql/pull/2067
+[#2069]: https://github.com/launchbadge/rusql/pull/2069
+[#2071]: https://github.com/launchbadge/rusql/pull/2071
+[#2072]: https://github.com/launchbadge/rusql/pull/2072
+[#2074]: https://github.com/launchbadge/rusql/pull/2074
+[#2081]: https://github.com/launchbadge/rusql/pull/2081
+[#2086]: https://github.com/launchbadge/rusql/pull/2086
+[#2089]: https://github.com/launchbadge/rusql/pull/2089
+[#2091]: https://github.com/launchbadge/rusql/pull/2091
 
 ## 0.6.1 - 2022-08-02
 
@@ -102,14 +102,14 @@ This fix will be forward-ported to `0.7`.
       (`/32` for IPv4, `/128` for IPv6).
 * [[#1865]]: Add SQLite support for the `time` crate [[@johnbcodes]]
 * [[#1902]]: Add an example of how to use `QueryBuilder::separated()` [[@sbeckeriv]]
-* [[#1917]]: Added docs for `sqlx::types::Json` [[@jayy-lmao]]
+* [[#1917]]: Added docs for `rusql::types::Json` [[@jayy-lmao]]
 * [[#1919]]: Implement `Clone` for `PoolOptions` [[@Thomasdezeeuw]]
 * [[#1953]]: Support Rust arrays in Postgres [[@e00E]]
 * [[#1954]]: Add `push_tuples` for `QueryBuilder` [[@0xdeafbeef]]
-* [[#1959]]: Support `#[sqlx(flatten)]` attribute in `FromRow` [[@TheoOiry]]
+* [[#1959]]: Support `#[rusql(flatten)]` attribute in `FromRow` [[@TheoOiry]]
 * [[#1967]]: Add example with external query files [[@JoeyMckenzie]]
 * [[#1985]]: Add `query_builder::Separated::push_bind_unseparated()` [[@0xdeafbeef]]
-* [[#2001]]: Implement `#[sqlx::test]` for general use
+* [[#2001]]: Implement `#[rusql::test]` for general use
     * Includes automatic database management, migration and fixture application.
     * Drops support for end-of-lifed database versions, see PR for details.
 * [[#2005]]: `QueryBuilder` improvements [[@abonander]]
@@ -124,7 +124,7 @@ This fix will be forward-ported to `0.7`.
 * [[#2003]]: Replace `dotenv` with `dotenvy` [[@abonander]]
 
 ### Fixed
-* [[#1802]]: Try avoiding a full clean in `cargo sqlx prepare --merged` [[@LovecraftianHorror]]
+* [[#1802]]: Try avoiding a full clean in `cargo rusql prepare --merged` [[@LovecraftianHorror]]
 * [[#1848]]: Fix type info access in `Any` database driver [[@raviqqe]]
 * [[#1910]]: Set `CARGO_TARGET_DIR` when compiling queries [[@sedrik]]
 * [[#1915]]: Pool: fix panic when using callbacks [[@abonander]]
@@ -132,7 +132,7 @@ This fix will be forward-ported to `0.7`.
 * [[#1948]]: Fix panic in Postgres `BYTEA` decode [[@e00E]]
 * [[#1955]]: Fix typo in FAQ [[@kenkoooo]]
 * [[#1968]]: (Postgres) don't panic if `S` or `V` notice fields are not UTF-8 [[@abonander]]
-* [[#1969]]: Fix sqlx-cli build [[@ivan]]
+* [[#1969]]: Fix rusql-cli build [[@ivan]]
 * [[#1974]]: Use the `rust-cache` action for CI [[@abonander]]
 * [[#1988]]: Agree on a single default runtime for the whole workspace [[@crepererum]]
 * [[#1989]]: Fix panics in `PgListener` [[@crepererum]]
@@ -140,41 +140,41 @@ This fix will be forward-ported to `0.7`.
     * The change had already been made in the repo, the docs were out of date.
 * [[#1993]]: Update versions in quickstart examples in README [[@UramnOIL]]
 
-[0.6.1-prs]: https://github.com/launchbadge/sqlx/pulls?page=1&q=is%3Apr+is%3Aclosed+merged%3A2022-06-17..2022-08-02
+[0.6.1-prs]: https://github.com/launchbadge/rusql/pulls?page=1&q=is%3Apr+is%3Aclosed+merged%3A2022-06-17..2022-08-02
 
-[#1906]: https://github.com/launchbadge/sqlx/pull/1906
-[#1495]: https://github.com/launchbadge/sqlx/pull/1495
-[#1679]: https://github.com/launchbadge/sqlx/pull/1679
-[#1802]: https://github.com/launchbadge/sqlx/pull/1802
-[#1822]: https://github.com/launchbadge/sqlx/pull/1822
-[#1848]: https://github.com/launchbadge/sqlx/pull/1848
-[#1865]: https://github.com/launchbadge/sqlx/pull/1865
-[#1902]: https://github.com/launchbadge/sqlx/pull/1902
-[#1910]: https://github.com/launchbadge/sqlx/pull/1910
-[#1915]: https://github.com/launchbadge/sqlx/pull/1915
-[#1917]: https://github.com/launchbadge/sqlx/pull/1917
-[#1919]: https://github.com/launchbadge/sqlx/pull/1919
-[#1930]: https://github.com/launchbadge/sqlx/pull/1930
-[#1948]: https://github.com/launchbadge/sqlx/pull/1948
-[#1953]: https://github.com/launchbadge/sqlx/pull/1953
-[#1954]: https://github.com/launchbadge/sqlx/pull/1954
-[#1955]: https://github.com/launchbadge/sqlx/pull/1955
-[#1959]: https://github.com/launchbadge/sqlx/pull/1959
-[#1965]: https://github.com/launchbadge/sqlx/pull/1965
-[#1967]: https://github.com/launchbadge/sqlx/pull/1967
-[#1968]: https://github.com/launchbadge/sqlx/pull/1968
-[#1969]: https://github.com/launchbadge/sqlx/pull/1969
-[#1974]: https://github.com/launchbadge/sqlx/pull/1974
-[#1977]: https://github.com/launchbadge/sqlx/pull/1977
-[#1985]: https://github.com/launchbadge/sqlx/pull/1985
-[#1988]: https://github.com/launchbadge/sqlx/pull/1988
-[#1989]: https://github.com/launchbadge/sqlx/pull/1989
-[#1990]: https://github.com/launchbadge/sqlx/pull/1990
-[#1993]: https://github.com/launchbadge/sqlx/pull/1993
-[#2001]: https://github.com/launchbadge/sqlx/pull/2001
-[#2003]: https://github.com/launchbadge/sqlx/pull/2003
-[#2005]: https://github.com/launchbadge/sqlx/pull/2005
-[#2013]: https://github.com/launchbadge/sqlx/pull/2013
+[#1906]: https://github.com/launchbadge/rusql/pull/1906
+[#1495]: https://github.com/launchbadge/rusql/pull/1495
+[#1679]: https://github.com/launchbadge/rusql/pull/1679
+[#1802]: https://github.com/launchbadge/rusql/pull/1802
+[#1822]: https://github.com/launchbadge/rusql/pull/1822
+[#1848]: https://github.com/launchbadge/rusql/pull/1848
+[#1865]: https://github.com/launchbadge/rusql/pull/1865
+[#1902]: https://github.com/launchbadge/rusql/pull/1902
+[#1910]: https://github.com/launchbadge/rusql/pull/1910
+[#1915]: https://github.com/launchbadge/rusql/pull/1915
+[#1917]: https://github.com/launchbadge/rusql/pull/1917
+[#1919]: https://github.com/launchbadge/rusql/pull/1919
+[#1930]: https://github.com/launchbadge/rusql/pull/1930
+[#1948]: https://github.com/launchbadge/rusql/pull/1948
+[#1953]: https://github.com/launchbadge/rusql/pull/1953
+[#1954]: https://github.com/launchbadge/rusql/pull/1954
+[#1955]: https://github.com/launchbadge/rusql/pull/1955
+[#1959]: https://github.com/launchbadge/rusql/pull/1959
+[#1965]: https://github.com/launchbadge/rusql/pull/1965
+[#1967]: https://github.com/launchbadge/rusql/pull/1967
+[#1968]: https://github.com/launchbadge/rusql/pull/1968
+[#1969]: https://github.com/launchbadge/rusql/pull/1969
+[#1974]: https://github.com/launchbadge/rusql/pull/1974
+[#1977]: https://github.com/launchbadge/rusql/pull/1977
+[#1985]: https://github.com/launchbadge/rusql/pull/1985
+[#1988]: https://github.com/launchbadge/rusql/pull/1988
+[#1989]: https://github.com/launchbadge/rusql/pull/1989
+[#1990]: https://github.com/launchbadge/rusql/pull/1990
+[#1993]: https://github.com/launchbadge/rusql/pull/1993
+[#2001]: https://github.com/launchbadge/rusql/pull/2001
+[#2003]: https://github.com/launchbadge/rusql/pull/2003
+[#2005]: https://github.com/launchbadge/rusql/pull/2005
+[#2013]: https://github.com/launchbadge/rusql/pull/2013
 
 ## 0.6.0 - 2022-06-16
 
@@ -209,7 +209,7 @@ As such, we expect the 0.6.x release series to be a shorter one.
 * [[#1785]]: Fix Rust type for SQLite `REAL` [[@pruthvikar]]
     * Makes the macros always map a `REAL` column to `f64` instead of `f32` as SQLite uses **only** 64-bit floats.
 * [[#1816]]: Improve SQLite support for sub-queries and CTEs [[@tyrelr]]
-    * This likely will change the generated code for some invocations `sqlx::query!()` with SQLite.
+    * This likely will change the generated code for some invocations `rusql::query!()` with SQLite.
 * [[#1821]]: Update `uuid` crate to v1 [[@paolobarbolini]]
 * [[#1901]]: Pool fixes and breaking changes [[@abonander]]
     * Renamed `PoolOptions::connect_timeout` to `acquire_timeout` for clarity.
@@ -218,13 +218,13 @@ As such, we expect the 0.6.x release series to be a shorter one.
         * Now eagerly starts the pool closing, `.await`ing is only necessary if you want to ensure a graceful shutdown.
     * Deleted `PoolConnection::release()` which was previously deprecated in favor of `PoolConnection::detach()`.
     * Fixed connections getting leaked even when calling `.close()`.
-* [[#1748]]: Derive `PgHasArrayType` for `#[sqlx(transparent)]` types [[@carols10cents]]
+* [[#1748]]: Derive `PgHasArrayType` for `#[rusql(transparent)]` types [[@carols10cents]]
     * This change was released with 0.5.12 but [we didn't realize it was a breaking change] at the time.  
       It was reverted in 0.5.13 and postponed until this release.
 
 ### Added
 * [[#1843]]: Expose some useful methods on `PgValueRef` [[@mfreeborn]]
-* [[#1889]]: SQLx-CLI: add `--connect-timeout` [[@abonander]]
+* [[#1889]]: RuSQL-CLI: add `--connect-timeout` [[@abonander]]
     * Adds a default 10 second connection timeout to all commands.
 * [[#1890]]: Added test for mssql LoginAck [[@walf443]]
 * [[#1891]]: Added test for mssql ProtocolInfo [[@walf443]]
@@ -233,18 +233,18 @@ As such, we expect the 0.6.x release series to be a shorter one.
 * [[#1897]]: Expose `ConnectOptions` and `PoolOptions` on `Pool` and database name on `PgConnectOptions` [[@Nukesor]]
 
 ### Changed
-* [[#1782]]: Reuse a cached DB connection instead of always opening a new one for `sqlx-macros` [[@LovecraftianHorror]]
+* [[#1782]]: Reuse a cached DB connection instead of always opening a new one for `rusql-macros` [[@LovecraftianHorror]]
 * [[#1807]]: Bump remaining dependencies [[@paolobarbolini]]
 * [[#1808]]: Update to edition 2021 [[@paolobarbolini]]
-    * Note that while SQLx [does not officially track an MSRV] and only officially supports the latest stable Rust, 
+    * Note that while RuSQL [does not officially track an MSRV] and only officially supports the latest stable Rust, 
       this effectively places a lower bound of 1.56.0 on the range of versions it may work with.
-* [[#1823]]: (sqlx-macros) Ignore deps when getting metadata for workspace root [[@LovecraftianHorror]]
+* [[#1823]]: (rusql-macros) Ignore deps when getting metadata for workspace root [[@LovecraftianHorror]]
 * [[#1831]]: Update `crc` to 3.0 [[@djc]]
 * [[#1887]]: query_as: don't stop stream after decoding error [[@lovasoa]]
 
 ### Fixed
-* [[#1814]]: SQLx-cli README: move `Usage` to the same level as `Install` [[@tobymurray]]
-* [[#1815]]: SQLx-cli README: reword "building in offline mode" [[@tobymurray]]
+* [[#1814]]: RuSQL-cli README: move `Usage` to the same level as `Install` [[@tobymurray]]
+* [[#1815]]: RuSQL-cli README: reword "building in offline mode" [[@tobymurray]]
 * [[#1818]]: Trim `[]` from host string before passing to TcpStream [[@smonv]]
     * This fixes handling of database URLs with IPv6 hosts.
 * [[#1842]]: Fix usage of `serde_json` in macros [[@mfreeborn]]
@@ -255,53 +255,53 @@ As such, we expect the 0.6.x release series to be a shorter one.
 * [[#1863]]: Fix nullability check for inner joins in Postgres [[@OskarPersson]]
 * [[#1881]]: Fix `field is never read` warnings on Postgres test [[@walf443]]
 * [[#1882]]: Fix `unused result must be used` warnings [[@walf443]]
-* [[#1888]]: Fix migration checksum comparison during `sqlx migrate info` [[@mdtusz]]
+* [[#1888]]: Fix migration checksum comparison during `rusql migrate info` [[@mdtusz]]
 * [[#1894]]: Fix typos [[@kianmeng]]
 
-[surveyed the community]: https://github.com/launchbadge/sqlx/issues/1796
-[0.6.0-prs]: https://github.com/launchbadge/sqlx/pulls?page=2&q=is%3Apr+is%3Amerged+merged%3A2022-04-14..2022-06-16
-[does not officially track an MSRV]: /FAQ.md#what-versions-of-rust-does-sqlx-support-what-is-sqlxs-msrv
-[we didn't realize it was a breaking change]: https://github.com/launchbadge/sqlx/pull/1800#issuecomment-1099898932
+[surveyed the community]: https://github.com/launchbadge/rusql/issues/1796
+[0.6.0-prs]: https://github.com/launchbadge/rusql/pulls?page=2&q=is%3Apr+is%3Amerged+merged%3A2022-04-14..2022-06-16
+[does not officially track an MSRV]: /FAQ.md#what-versions-of-rust-does-rusql-support-what-is-rusqls-msrv
+[we didn't realize it was a breaking change]: https://github.com/launchbadge/rusql/pull/1800#issuecomment-1099898932
 
-[#1384]: https://github.com/launchbadge/sqlx/pull/1384
-[#1426]: https://github.com/launchbadge/sqlx/pull/1426
-[#1455]: https://github.com/launchbadge/sqlx/pull/1455
-[#1505]: https://github.com/launchbadge/sqlx/pull/1505
-[#1529]: https://github.com/launchbadge/sqlx/pull/1529
-[#1602]: https://github.com/launchbadge/sqlx/pull/1602
-[#1612]: https://github.com/launchbadge/sqlx/pull/1612
-[#1618]: https://github.com/launchbadge/sqlx/pull/1618
-[#1733]: https://github.com/launchbadge/sqlx/pull/1733
-[#1734]: https://github.com/launchbadge/sqlx/pull/1734
-[#1782]: https://github.com/launchbadge/sqlx/pull/1782
-[#1785]: https://github.com/launchbadge/sqlx/pull/1785
-[#1807]: https://github.com/launchbadge/sqlx/pull/1807
-[#1808]: https://github.com/launchbadge/sqlx/pull/1808
-[#1814]: https://github.com/launchbadge/sqlx/pull/1814
-[#1815]: https://github.com/launchbadge/sqlx/pull/1815
-[#1816]: https://github.com/launchbadge/sqlx/pull/1816
-[#1818]: https://github.com/launchbadge/sqlx/pull/1818
-[#1821]: https://github.com/launchbadge/sqlx/pull/1821
-[#1823]: https://github.com/launchbadge/sqlx/pull/1823
-[#1831]: https://github.com/launchbadge/sqlx/pull/1831
-[#1842]: https://github.com/launchbadge/sqlx/pull/1842
-[#1843]: https://github.com/launchbadge/sqlx/pull/1843
-[#1855]: https://github.com/launchbadge/sqlx/pull/1855
-[#1856]: https://github.com/launchbadge/sqlx/pull/1856
-[#1861]: https://github.com/launchbadge/sqlx/pull/1861
-[#1863]: https://github.com/launchbadge/sqlx/pull/1863
-[#1881]: https://github.com/launchbadge/sqlx/pull/1881
-[#1882]: https://github.com/launchbadge/sqlx/pull/1882
-[#1887]: https://github.com/launchbadge/sqlx/pull/1887
-[#1888]: https://github.com/launchbadge/sqlx/pull/1888
-[#1889]: https://github.com/launchbadge/sqlx/pull/1889
-[#1890]: https://github.com/launchbadge/sqlx/pull/1890
-[#1891]: https://github.com/launchbadge/sqlx/pull/1891
-[#1892]: https://github.com/launchbadge/sqlx/pull/1892
-[#1894]: https://github.com/launchbadge/sqlx/pull/1894
-[#1895]: https://github.com/launchbadge/sqlx/pull/1895
-[#1897]: https://github.com/launchbadge/sqlx/pull/1897
-[#1901]: https://github.com/launchbadge/sqlx/pull/1901
+[#1384]: https://github.com/launchbadge/rusql/pull/1384
+[#1426]: https://github.com/launchbadge/rusql/pull/1426
+[#1455]: https://github.com/launchbadge/rusql/pull/1455
+[#1505]: https://github.com/launchbadge/rusql/pull/1505
+[#1529]: https://github.com/launchbadge/rusql/pull/1529
+[#1602]: https://github.com/launchbadge/rusql/pull/1602
+[#1612]: https://github.com/launchbadge/rusql/pull/1612
+[#1618]: https://github.com/launchbadge/rusql/pull/1618
+[#1733]: https://github.com/launchbadge/rusql/pull/1733
+[#1734]: https://github.com/launchbadge/rusql/pull/1734
+[#1782]: https://github.com/launchbadge/rusql/pull/1782
+[#1785]: https://github.com/launchbadge/rusql/pull/1785
+[#1807]: https://github.com/launchbadge/rusql/pull/1807
+[#1808]: https://github.com/launchbadge/rusql/pull/1808
+[#1814]: https://github.com/launchbadge/rusql/pull/1814
+[#1815]: https://github.com/launchbadge/rusql/pull/1815
+[#1816]: https://github.com/launchbadge/rusql/pull/1816
+[#1818]: https://github.com/launchbadge/rusql/pull/1818
+[#1821]: https://github.com/launchbadge/rusql/pull/1821
+[#1823]: https://github.com/launchbadge/rusql/pull/1823
+[#1831]: https://github.com/launchbadge/rusql/pull/1831
+[#1842]: https://github.com/launchbadge/rusql/pull/1842
+[#1843]: https://github.com/launchbadge/rusql/pull/1843
+[#1855]: https://github.com/launchbadge/rusql/pull/1855
+[#1856]: https://github.com/launchbadge/rusql/pull/1856
+[#1861]: https://github.com/launchbadge/rusql/pull/1861
+[#1863]: https://github.com/launchbadge/rusql/pull/1863
+[#1881]: https://github.com/launchbadge/rusql/pull/1881
+[#1882]: https://github.com/launchbadge/rusql/pull/1882
+[#1887]: https://github.com/launchbadge/rusql/pull/1887
+[#1888]: https://github.com/launchbadge/rusql/pull/1888
+[#1889]: https://github.com/launchbadge/rusql/pull/1889
+[#1890]: https://github.com/launchbadge/rusql/pull/1890
+[#1891]: https://github.com/launchbadge/rusql/pull/1891
+[#1892]: https://github.com/launchbadge/rusql/pull/1892
+[#1894]: https://github.com/launchbadge/rusql/pull/1894
+[#1895]: https://github.com/launchbadge/rusql/pull/1895
+[#1897]: https://github.com/launchbadge/rusql/pull/1897
+[#1901]: https://github.com/launchbadge/rusql/pull/1901
 
 ## 0.5.13 - 2022-04-15
 
@@ -317,10 +317,10 @@ This change will have to wait for 0.6.0.
 * [[#1675]]: Add function to undo migrations [[@jdrouet]]
 * [[#1722]]: Postgres: implement `PgHasArrayType` for `serde_json::{Value, RawValue}` [[@abreis]]
 * [[#1736]]: Derive `Clone` for `MySqlArguments` and `MssqlArguments` [[@0xdeafbeef]]
-* [[#1748]]: Derive `PgHasArrayType` for `#[sqlx(transparent)]` types [[@carols10cents]]
+* [[#1748]]: Derive `PgHasArrayType` for `#[rusql(transparent)]` types [[@carols10cents]]
 * [[#1754]]: Include affected rows alongside returned rows in query logging [[@david-mcgillicuddy-moixa]]
 * [[#1757]]: Implement `Type` for `Cow<str>` for MySQL, MSSQL and SQLite [[@ipetkov]]
-* [[#1769]]: sqlx-cli: add `--source` to migration subcommands [[@pedromfedricci]]
+* [[#1769]]: rusql-cli: add `--source` to migration subcommands [[@pedromfedricci]]
 * [[#1774]]: Postgres: make `extra_float_digits` settable [[@abonander]]
     * Can be set to `None` for Postgres or third-party database servers that don't support the option.
 * [[#1776]]: Implement close-event notification for Pool [[@abonander]]
@@ -340,7 +340,7 @@ This change will have to wait for 0.6.0.
 ### Fixed
 * [[#1719]]: Fix a link in `query!()` docs [[@vbmade2000]]
 * [[#1731]]: Postgres: fix option passing logic [[@liushuyu]]
-* [[#1735]]: sqlx-cli: pass `DATABASE_URL` to command spawned in `prepare` [[@LovecraftianHorror]]
+* [[#1735]]: rusql-cli: pass `DATABASE_URL` to command spawned in `prepare` [[@LovecraftianHorror]]
 * [[#1741]]: Postgres: fix typo in `TSTZRANGE` [[@mgrachev]]
 * [[#1761]]: Fix link from `QueryAs` to `query_as()` in docs [[@mgrachev]]
 * [[#1786]]: MySQL: silence compile warnings for unused fields [[@andrewwhitehead]]
@@ -348,35 +348,35 @@ This change will have to wait for 0.6.0.
 * [[#1791]]: Postgres: fix newline parsing of `.pgpass` files [[@SebastienGllmt]]
 * [[#1799]]: `PoolConnection`: don't leak connection permit if drop task fails to run [[@abonander]]
 
-[#1625]: https://github.com/launchbadge/sqlx/pull/1625
-[#1641]: https://github.com/launchbadge/sqlx/pull/1641
-[#1675]: https://github.com/launchbadge/sqlx/pull/1675
-[#1719]: https://github.com/launchbadge/sqlx/pull/1719
-[#1722]: https://github.com/launchbadge/sqlx/pull/1722
-[#1725]: https://github.com/launchbadge/sqlx/pull/1725
-[#1731]: https://github.com/launchbadge/sqlx/pull/1731
-[#1735]: https://github.com/launchbadge/sqlx/pull/1735
-[#1736]: https://github.com/launchbadge/sqlx/pull/1736
-[#1738]: https://github.com/launchbadge/sqlx/pull/1738
-[#1741]: https://github.com/launchbadge/sqlx/pull/1741
-[#1748]: https://github.com/launchbadge/sqlx/pull/1748
-[#1754]: https://github.com/launchbadge/sqlx/pull/1754
-[#1757]: https://github.com/launchbadge/sqlx/pull/1757
-[#1761]: https://github.com/launchbadge/sqlx/pull/1761
-[#1763]: https://github.com/launchbadge/sqlx/pull/1763
-[#1769]: https://github.com/launchbadge/sqlx/pull/1769
-[#1774]: https://github.com/launchbadge/sqlx/pull/1774
-[#1776]: https://github.com/launchbadge/sqlx/pull/1776
-[#1780]: https://github.com/launchbadge/sqlx/pull/1780
-[#1781]: https://github.com/launchbadge/sqlx/pull/1781
-[#1784]: https://github.com/launchbadge/sqlx/pull/1784
-[#1786]: https://github.com/launchbadge/sqlx/pull/1786
-[#1789]: https://github.com/launchbadge/sqlx/pull/1789
-[#1790]: https://github.com/launchbadge/sqlx/pull/1790
-[#1791]: https://github.com/launchbadge/sqlx/pull/1791
-[#1799]: https://github.com/launchbadge/sqlx/pull/1799
+[#1625]: https://github.com/launchbadge/rusql/pull/1625
+[#1641]: https://github.com/launchbadge/rusql/pull/1641
+[#1675]: https://github.com/launchbadge/rusql/pull/1675
+[#1719]: https://github.com/launchbadge/rusql/pull/1719
+[#1722]: https://github.com/launchbadge/rusql/pull/1722
+[#1725]: https://github.com/launchbadge/rusql/pull/1725
+[#1731]: https://github.com/launchbadge/rusql/pull/1731
+[#1735]: https://github.com/launchbadge/rusql/pull/1735
+[#1736]: https://github.com/launchbadge/rusql/pull/1736
+[#1738]: https://github.com/launchbadge/rusql/pull/1738
+[#1741]: https://github.com/launchbadge/rusql/pull/1741
+[#1748]: https://github.com/launchbadge/rusql/pull/1748
+[#1754]: https://github.com/launchbadge/rusql/pull/1754
+[#1757]: https://github.com/launchbadge/rusql/pull/1757
+[#1761]: https://github.com/launchbadge/rusql/pull/1761
+[#1763]: https://github.com/launchbadge/rusql/pull/1763
+[#1769]: https://github.com/launchbadge/rusql/pull/1769
+[#1774]: https://github.com/launchbadge/rusql/pull/1774
+[#1776]: https://github.com/launchbadge/rusql/pull/1776
+[#1780]: https://github.com/launchbadge/rusql/pull/1780
+[#1781]: https://github.com/launchbadge/rusql/pull/1781
+[#1784]: https://github.com/launchbadge/rusql/pull/1784
+[#1786]: https://github.com/launchbadge/rusql/pull/1786
+[#1789]: https://github.com/launchbadge/rusql/pull/1789
+[#1790]: https://github.com/launchbadge/rusql/pull/1790
+[#1791]: https://github.com/launchbadge/rusql/pull/1791
+[#1799]: https://github.com/launchbadge/rusql/pull/1799
 
-[0.5.12-prs]: https://github.com/launchbadge/sqlx/pulls?q=is%3Apr+is%3Amerged+merged%3A2022-02-19..2022-04-13
+[0.5.12-prs]: https://github.com/launchbadge/rusql/pulls?q=is%3Apr+is%3Amerged+merged%3A2022-02-19..2022-04-13
 
 ## 0.5.11 - 2022-02-17
 [20 pull requests][0.5.11-prs] were merged this release cycle.
@@ -386,8 +386,8 @@ This change will have to wait for 0.6.0.
 * [[#1652]]: Implement `From` for `AnyConnection` [[@genusistimelord]]
 * [[#1658]]: Handle `SQLITE_LOCKED` [[@madadam]]
 * [[#1665]]: Document offline mode usage with feature flags [[@sedrik]]
-* [[#1680]]: Show checksum mismatches in `sqlx migrate info` [[@ifn3]]
-* [[#1685]]: Add tip for setting `opt-level` for `sqlx-macros` [[@LovecraftianHorror]]
+* [[#1680]]: Show checksum mismatches in `rusql migrate info` [[@ifn3]]
+* [[#1685]]: Add tip for setting `opt-level` for `rusql-macros` [[@LovecraftianHorror]]
 * [[#1687]]: Docs: `Acquire` examples and alternative [[@stoically]]
 * [[#1696]]: Postgres: support for `ltree` [[@cemoktra]]
 * [[#1710]]: Postgres: support for `lquery` [[@cemoktra]]
@@ -395,12 +395,12 @@ This change will have to wait for 0.6.0.
 ### Changed
 * [[#1605]]: Remove unused dependencies [[@paolobarbolini]]
 * [[#1606]]: Add target context to Postgres `NOTICE` logs [[@dbeckwith]]
-* [[#1684]]: Macros: Cache parsed `sqlx-data.json` instead of reparsing [[@LovecraftianHorror]]
+* [[#1684]]: Macros: Cache parsed `rusql-data.json` instead of reparsing [[@LovecraftianHorror]]
 
 ### Fixed
 * [[#1608]]: Drop worker shared state in shutdown (SQLite) [[@andrewwhitehead]]
 * [[#1619]]: Docs(macros): remove sentences banning usage of `as _` [[@k-jun]]
-* [[#1626]]: Simplify `cargo-sqlx` command-line definition [[@tranzystorek-io]]
+* [[#1626]]: Simplify `cargo-rusql` command-line definition [[@tranzystorek-io]]
 * [[#1636]]: Fix and extend Postgres transaction example [[@taladar]]
 * [[#1657]]: Fix typo in macro docs [[@p9s]]
 * [[#1661]]: Fix binding `Option<T>` for `Any` driver [[@ArGGu]]
@@ -415,7 +415,7 @@ Additionally, we have introduced two mitigations for [the issue of the cyclic de
     sorry about that.
 * Thanks to the work of [@LovecraftianHorror] in [#1684], we no longer require the `preserve_order` feature of
   `serde_json` which gives users another place to break the cycle by simply not enabling that feature. 
-  * This may introduce extra churn in Git diffs for `sqlx-data.json`, however. If this is an issue for you but 
+  * This may introduce extra churn in Git diffs for `rusql-data.json`, however. If this is an issue for you but 
     the dependency cycle isn't, you can re-enable the `preserve_order` feature:
   ```toml
   [dependencies]
@@ -424,30 +424,30 @@ Additionally, we have introduced two mitigations for [the issue of the cyclic de
 
 [aHash#95]: https://github.com/tkaitchuck/aHash/issues/95
 [ahash-fix]: https://github.com/tkaitchuck/aHash/issues/95#issuecomment-874150078
-[indexmap-regression]: https://github.com/launchbadge/sqlx/pull/1603#issuecomment-1010827637
+[indexmap-regression]: https://github.com/launchbadge/rusql/pull/1603#issuecomment-1010827637
 
-[#1605]: https://github.com/launchbadge/sqlx/pull/1605
-[#1606]: https://github.com/launchbadge/sqlx/pull/1606
-[#1608]: https://github.com/launchbadge/sqlx/pull/1608
-[#1610]: https://github.com/launchbadge/sqlx/pull/1610
-[#1619]: https://github.com/launchbadge/sqlx/pull/1619
-[#1626]: https://github.com/launchbadge/sqlx/pull/1626
-[#1636]: https://github.com/launchbadge/sqlx/pull/1636
-[#1652]: https://github.com/launchbadge/sqlx/pull/1652
-[#1657]: https://github.com/launchbadge/sqlx/pull/1657
-[#1658]: https://github.com/launchbadge/sqlx/pull/1658
-[#1661]: https://github.com/launchbadge/sqlx/pull/1661
-[#1665]: https://github.com/launchbadge/sqlx/pull/1665
-[#1667]: https://github.com/launchbadge/sqlx/pull/1667
-[#1680]: https://github.com/launchbadge/sqlx/pull/1680
-[#1684]: https://github.com/launchbadge/sqlx/pull/1684
-[#1685]: https://github.com/launchbadge/sqlx/pull/1685
-[#1687]: https://github.com/launchbadge/sqlx/pull/1687
-[#1692]: https://github.com/launchbadge/sqlx/pull/1692
-[#1696]: https://github.com/launchbadge/sqlx/pull/1696
-[#1710]: https://github.com/launchbadge/sqlx/pull/1710
+[#1605]: https://github.com/launchbadge/rusql/pull/1605
+[#1606]: https://github.com/launchbadge/rusql/pull/1606
+[#1608]: https://github.com/launchbadge/rusql/pull/1608
+[#1610]: https://github.com/launchbadge/rusql/pull/1610
+[#1619]: https://github.com/launchbadge/rusql/pull/1619
+[#1626]: https://github.com/launchbadge/rusql/pull/1626
+[#1636]: https://github.com/launchbadge/rusql/pull/1636
+[#1652]: https://github.com/launchbadge/rusql/pull/1652
+[#1657]: https://github.com/launchbadge/rusql/pull/1657
+[#1658]: https://github.com/launchbadge/rusql/pull/1658
+[#1661]: https://github.com/launchbadge/rusql/pull/1661
+[#1665]: https://github.com/launchbadge/rusql/pull/1665
+[#1667]: https://github.com/launchbadge/rusql/pull/1667
+[#1680]: https://github.com/launchbadge/rusql/pull/1680
+[#1684]: https://github.com/launchbadge/rusql/pull/1684
+[#1685]: https://github.com/launchbadge/rusql/pull/1685
+[#1687]: https://github.com/launchbadge/rusql/pull/1687
+[#1692]: https://github.com/launchbadge/rusql/pull/1692
+[#1696]: https://github.com/launchbadge/rusql/pull/1696
+[#1710]: https://github.com/launchbadge/rusql/pull/1710
 
-[0.5.11-prs]: https://github.com/launchbadge/sqlx/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-12-30..2022-02-17
+[0.5.11-prs]: https://github.com/launchbadge/rusql/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-12-30..2022-02-17
 
 ## 0.5.10 - 2021-12-29
 [A whopping 31 pull requests][0.5.10-prs] were merged this release cycle!
@@ -460,14 +460,14 @@ this time and tried to list every single one here.
 * [[#1228]]: Add `Pool::any_kind()` [[@nitnelave]]
 * [[#1343]]: Add `Encode/Decode` impl for `Cow<'_, str>` [[@Drevoed]]
 * [[#1474]]: Derive `Clone`, `Copy` for `AnyKind` [[@yuyawk]]
-* [[#1497]]: Update FAQ to explain how to configure docs.rs to build a project using SQLx [[@russweas]]
+* [[#1497]]: Update FAQ to explain how to configure docs.rs to build a project using RuSQL [[@russweas]]
 * [[#1498]]: Add description of migration file structure to `migrate!()` docs [[@zbigniewzolnierowicz]]
 * [[#1508]]: Add `.persistent(bool)` to `QueryAs`, `QueryScalar` [[@akiradeveloper]]
 * [[#1514]]: Add support for serialized threading mode to SQLite [[@LLBlumire]]
 * [[#1523]]: Allow `rust_decimal::Decimal` in `PgRange` [[@meh]]
 * [[#1539]]: Support `PGOPTIONS` and adding custom configuration options in `PgConnectOptions` [[@liushuyu]]
 * [[#1562]]: Re-export `either::Either` used by `Executor::fetch_many()` [[@DoumanAsh]]
-* [[#1584]]: Add feature to use RusTLS instead of `native-tls` for `sqlx-cli` [[@SonicZentropy]]
+* [[#1584]]: Add feature to use RusTLS instead of `native-tls` for `rusql-cli` [[@SonicZentropy]]
 * [[#1592]]: Add `AnyConnection::kind()` [[@05storm26]]
 
 ### Changes
@@ -491,48 +491,48 @@ this time and tried to list every single one here.
 * [[#1517]]: Fix mismatched type errors in MySQL type tests [[@abonander]]
 * [[#1537]]: Fix missing re-export of `PgCopyIn` [[@akiradeveloper]]
 * [[#1566]]: Match `~/.pgpass` password after URL parsing and fix user and database ordering [[@D1plo1d]]
-* [[#1582]]: `cargo sqlx prepare`: Append to existing `RUSTFLAGS` instead of overwriting [[@tkintscher]]
+* [[#1582]]: `cargo rusql prepare`: Append to existing `RUSTFLAGS` instead of overwriting [[@tkintscher]]
 * [[#1587]]: SQLite: if set, send `PRAGMA key` on a new connection before anything else. [[@parazyd]]
     * This should fix problems with being unable to open databases using SQLCipher.
     
 
-[#1228]: https://github.com/launchbadge/sqlx/pull/1228
-[#1343]: https://github.com/launchbadge/sqlx/pull/1343
-[#1385]: https://github.com/launchbadge/sqlx/pull/1385
-[#1474]: https://github.com/launchbadge/sqlx/pull/1474
-[#1475]: https://github.com/launchbadge/sqlx/pull/1475
-[#1479]: https://github.com/launchbadge/sqlx/pull/1479
-[#1483]: https://github.com/launchbadge/sqlx/pull/1483
-[#1497]: https://github.com/launchbadge/sqlx/pull/1497
-[#1498]: https://github.com/launchbadge/sqlx/pull/1498
-[#1501]: https://github.com/launchbadge/sqlx/pull/1501
-[#1508]: https://github.com/launchbadge/sqlx/pull/1508 
-[#1511]: https://github.com/launchbadge/sqlx/pull/1511
-[#1514]: https://github.com/launchbadge/sqlx/pull/1514
-[#1517]: https://github.com/launchbadge/sqlx/pull/1517
-[#1523]: https://github.com/launchbadge/sqlx/pull/1523
-[#1526]: https://github.com/launchbadge/sqlx/pull/1526
-[#1535]: https://github.com/launchbadge/sqlx/pull/1535
-[#1537]: https://github.com/launchbadge/sqlx/pull/1537
-[#1539]: https://github.com/launchbadge/sqlx/pull/1539
-[#1551]: https://github.com/launchbadge/sqlx/pull/1551
-[#1557]: https://github.com/launchbadge/sqlx/pull/1557
-[#1562]: https://github.com/launchbadge/sqlx/pull/1562
-[#1566]: https://github.com/launchbadge/sqlx/pull/1566
-[#1571]: https://github.com/launchbadge/sqlx/pull/1571
-[#1572]: https://github.com/launchbadge/sqlx/pull/1572
-[#1582]: https://github.com/launchbadge/sqlx/pull/1582
-[#1584]: https://github.com/launchbadge/sqlx/pull/1584
-[#1587]: https://github.com/launchbadge/sqlx/pull/1587
-[#1591]: https://github.com/launchbadge/sqlx/pull/1591
-[#1592]: https://github.com/launchbadge/sqlx/pull/1592
-[#1601]: https://github.com/launchbadge/sqlx/pull/1601
-[0.5.10-prs]: https://github.com/launchbadge/sqlx/pulls?page=1&q=is%3Apr+merged%3A2021-10-02..2021-12-31+sort%3Acreated-asc
+[#1228]: https://github.com/launchbadge/rusql/pull/1228
+[#1343]: https://github.com/launchbadge/rusql/pull/1343
+[#1385]: https://github.com/launchbadge/rusql/pull/1385
+[#1474]: https://github.com/launchbadge/rusql/pull/1474
+[#1475]: https://github.com/launchbadge/rusql/pull/1475
+[#1479]: https://github.com/launchbadge/rusql/pull/1479
+[#1483]: https://github.com/launchbadge/rusql/pull/1483
+[#1497]: https://github.com/launchbadge/rusql/pull/1497
+[#1498]: https://github.com/launchbadge/rusql/pull/1498
+[#1501]: https://github.com/launchbadge/rusql/pull/1501
+[#1508]: https://github.com/launchbadge/rusql/pull/1508 
+[#1511]: https://github.com/launchbadge/rusql/pull/1511
+[#1514]: https://github.com/launchbadge/rusql/pull/1514
+[#1517]: https://github.com/launchbadge/rusql/pull/1517
+[#1523]: https://github.com/launchbadge/rusql/pull/1523
+[#1526]: https://github.com/launchbadge/rusql/pull/1526
+[#1535]: https://github.com/launchbadge/rusql/pull/1535
+[#1537]: https://github.com/launchbadge/rusql/pull/1537
+[#1539]: https://github.com/launchbadge/rusql/pull/1539
+[#1551]: https://github.com/launchbadge/rusql/pull/1551
+[#1557]: https://github.com/launchbadge/rusql/pull/1557
+[#1562]: https://github.com/launchbadge/rusql/pull/1562
+[#1566]: https://github.com/launchbadge/rusql/pull/1566
+[#1571]: https://github.com/launchbadge/rusql/pull/1571
+[#1572]: https://github.com/launchbadge/rusql/pull/1572
+[#1582]: https://github.com/launchbadge/rusql/pull/1582
+[#1584]: https://github.com/launchbadge/rusql/pull/1584
+[#1587]: https://github.com/launchbadge/rusql/pull/1587
+[#1591]: https://github.com/launchbadge/rusql/pull/1591
+[#1592]: https://github.com/launchbadge/rusql/pull/1592
+[#1601]: https://github.com/launchbadge/rusql/pull/1601
+[0.5.10-prs]: https://github.com/launchbadge/rusql/pulls?page=1&q=is%3Apr+merged%3A2021-10-02..2021-12-31+sort%3Acreated-asc
 
 ## 0.5.9 - 2021-10-01
 
-A hotfix release to address the issue of the `sqlx` crate itself still depending on older versions of `sqlx-core` and 
-`sqlx-macros`.
+A hotfix release to address the issue of the `rusql` crate itself still depending on older versions of `rusql-core` and 
+`rusql-macros`.
 
 No other changes from `0.5.8`.
 
@@ -542,15 +542,15 @@ No other changes from `0.5.8`.
 
 * [[#1289]] Support the `immutable` option on SQLite connections [[@djmarcin]]
 * [[#1295]] Support custom initial options for SQLite [[@ghassmo]]
-    * Allows specifying custom `PRAGMA`s and overriding those set by SQLx.
+    * Allows specifying custom `PRAGMA`s and overriding those set by RuSQL.
 * [[#1345]] Initial support for Postgres `COPY FROM/TO`[[@montanalow], [@abonander]]
 * [[#1439]] Handle multiple waiting results correctly in MySQL [[@eagletmt]]
 
-[#1289]: https://github.com/launchbadge/sqlx/pull/1289
-[#1295]: https://github.com/launchbadge/sqlx/pull/1295
-[#1345]: https://github.com/launchbadge/sqlx/pull/1345
-[#1439]: https://github.com/launchbadge/sqlx/pull/1439
-[0.5.8-prs]: https://github.com/launchbadge/sqlx/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-08-21..2021-10-01
+[#1289]: https://github.com/launchbadge/rusql/pull/1289
+[#1295]: https://github.com/launchbadge/rusql/pull/1295
+[#1345]: https://github.com/launchbadge/rusql/pull/1345
+[#1439]: https://github.com/launchbadge/rusql/pull/1439
+[0.5.8-prs]: https://github.com/launchbadge/rusql/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-08-21..2021-10-01
 
 ## 0.5.7 - 2021-08-20
 
@@ -559,8 +559,8 @@ No other changes from `0.5.8`.
 * [[#1393]] avoid recursively spawning tasks in `PgListener::drop()` [[@abonander]]
     * Fixes a panic that occurs when `PgListener` is dropped in `async fn main()`.
 
-[#1392]: https://github.com/launchbadge/sqlx/pull/1392
-[#1393]: https://github.com/launchbadge/sqlx/pull/1393
+[#1392]: https://github.com/launchbadge/rusql/pull/1392
+[#1393]: https://github.com/launchbadge/rusql/pull/1393
 
 ## 0.5.6 - 2021-08-16
 
@@ -568,13 +568,13 @@ A large bugfix release, including but not limited to:
 
 * [[#1329]] Implement `MACADDR` type for Postgres [[@nomick]]
 * [[#1363]] Fix `PortalSuspended` for array of composite types in Postgres [[@AtkinsChang]]
-* [[#1320]] Reimplement `sqlx::Pool` internals using `futures-intrusive` [[@abonander]]
+* [[#1320]] Reimplement `rusql::Pool` internals using `futures-intrusive` [[@abonander]]
     * This addresses a number of deadlocks/stalls on acquiring connections from the pool.
 * [[#1332]] Macros: tell the compiler about external files/env vars to watch [[@abonander]]
-    * Includes `sqlx build-script` to create a `build.rs` to watch `migrations/` for changes.
-    * Nightly users can try `RUSTFLAGS=--cfg sqlx_macros_unstable` to tell the compiler 
+    * Includes `rusql build-script` to create a `build.rs` to watch `migrations/` for changes.
+    * Nightly users can try `RUSTFLAGS=--cfg rusql_macros_unstable` to tell the compiler 
       to watch `migrations/` for changes instead of using a build script. 
-    * See the new section in the docs for `sqlx::migrate!()` for details.
+    * See the new section in the docs for `rusql::migrate!()` for details.
 * [[#1351]] Fix a few sources of segfaults/errors in SQLite driver [[@abonander]]
     * Includes contributions from [[@link2ext]] and [[@madadam]].
 * [[#1323]] Keep track of column typing in SQLite EXPLAIN parsing [[@marshoepial]]
@@ -582,25 +582,25 @@ A large bugfix release, including but not limited to:
     
 [A total of 25 pull requests][0.5.6-prs] were merged this release cycle!
 
-[#1329]: https://github.com/launchbadge/sqlx/pull/1329
-[#1363]: https://github.com/launchbadge/sqlx/pull/1363
-[#1320]: https://github.com/launchbadge/sqlx/pull/1320
-[#1332]: https://github.com/launchbadge/sqlx/pull/1332
-[#1351]: https://github.com/launchbadge/sqlx/pull/1351
-[#1323]: https://github.com/launchbadge/sqlx/pull/1323
-[0.5.6-prs]: https://github.com/launchbadge/sqlx/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-05-24..2021-08-17
+[#1329]: https://github.com/launchbadge/rusql/pull/1329
+[#1363]: https://github.com/launchbadge/rusql/pull/1363
+[#1320]: https://github.com/launchbadge/rusql/pull/1320
+[#1332]: https://github.com/launchbadge/rusql/pull/1332
+[#1351]: https://github.com/launchbadge/rusql/pull/1351
+[#1323]: https://github.com/launchbadge/rusql/pull/1323
+[0.5.6-prs]: https://github.com/launchbadge/rusql/pulls?q=is%3Apr+is%3Amerged+merged%3A2021-05-24..2021-08-17
 
 ## 0.5.5 - 2021-05-24
 
 -   [[#1242]] Fix infinite loop at compile time when using query macros [[@toshokan]]
 
-[#1242]: https://github.com/launchbadge/sqlx/pull/1242
+[#1242]: https://github.com/launchbadge/rusql/pull/1242
 
 ## 0.5.4 - 2021-05-22
 
 -   [[#1235]] Fix compilation with rustls from an eager update to webpki [[@ETCaton]]
 
-[#1235]: https://github.com/launchbadge/sqlx/pull/1235
+[#1235]: https://github.com/launchbadge/rusql/pull/1235
 
 ## 0.5.3 - 2021-05-21
 
@@ -614,11 +614,11 @@ A large bugfix release, including but not limited to:
 
 -   [[#1218]] Add support for `PgMoney` to the compile-time type-checking [[@iamsiddhant05]]
 
-[#1211]: https://github.com/launchbadge/sqlx/pull/1211
-[#1213]: https://github.com/launchbadge/sqlx/pull/1213
-[#1216]: https://github.com/launchbadge/sqlx/pull/1216
-[#1218]: https://github.com/launchbadge/sqlx/pull/1218
-[#1224]: https://github.com/launchbadge/sqlx/pull/1224
+[#1211]: https://github.com/launchbadge/rusql/pull/1211
+[#1213]: https://github.com/launchbadge/rusql/pull/1213
+[#1216]: https://github.com/launchbadge/rusql/pull/1216
+[#1218]: https://github.com/launchbadge/rusql/pull/1218
+[#1224]: https://github.com/launchbadge/rusql/pull/1224
 
 ## 0.5.2 - 2021-04-15
 
@@ -626,15 +626,15 @@ A large bugfix release, including but not limited to:
 
 -   [[#1132]] Remove `'static` bound on `Connection::transaction` [[@argv-minus-one]]
 
--   [[#1128]] Fix `-y` flag for `sqlx db reset -y` [[@qqwa]]
+-   [[#1128]] Fix `-y` flag for `rusql db reset -y` [[@qqwa]]
 
 -   [[#1099]] [[#1097]] Truncate buffer when `BufStream` is dropped [[@Diggsey]]
 
-[#1132]: https://github.com/launchbadge/sqlx/pull/1132
-[#1149]: https://github.com/launchbadge/sqlx/pull/1149
-[#1128]: https://github.com/launchbadge/sqlx/pull/1128
-[#1099]: https://github.com/launchbadge/sqlx/pull/1099
-[#1097]: https://github.com/launchbadge/sqlx/issues/1097
+[#1132]: https://github.com/launchbadge/rusql/pull/1132
+[#1149]: https://github.com/launchbadge/rusql/pull/1149
+[#1128]: https://github.com/launchbadge/rusql/pull/1128
+[#1099]: https://github.com/launchbadge/rusql/pull/1099
+[#1097]: https://github.com/launchbadge/rusql/issues/1097
 
 ### PostgreSQL
 
@@ -643,10 +643,10 @@ A large bugfix release, including but not limited to:
     Enables working around the lack of support for user-defined array types:
 
     ```rust
-    #[derive(sqlx::Encode)]
+    #[derive(rusql::Encode)]
     struct Foos<'a>(&'a [Foo]);
 
-    impl sqlx::Type<sqlx::Postgres> for Foos<'_> {
+    impl rusql::Type<rusql::Postgres> for Foos<'_> {
         fn type_info() -> PgTypeInfo {
             PgTypeInfo::with_name("_foo")
         }
@@ -665,10 +665,10 @@ A large bugfix release, including but not limited to:
 
 -   [[#1100]] Explicitly `UNLISTEN` before returning connections to the pool in `PgListener` [[@Diggsey]]
 
-[#1170]: https://github.com/launchbadge/sqlx/pull/1170
-[#1141]: https://github.com/launchbadge/sqlx/pull/1141
-[#1112]: https://github.com/launchbadge/sqlx/pull/1112
-[#1100]: https://github.com/launchbadge/sqlx/pull/1100
+[#1170]: https://github.com/launchbadge/rusql/pull/1170
+[#1141]: https://github.com/launchbadge/rusql/pull/1141
+[#1112]: https://github.com/launchbadge/rusql/pull/1112
+[#1100]: https://github.com/launchbadge/rusql/pull/1100
 
 ### SQLite
 
@@ -678,13 +678,13 @@ A large bugfix release, including but not limited to:
 
 -   [[#1156]] Reset the statement when `fetch_many` stream is dropped [[@link2xt]]
 
-[#1161]: https://github.com/launchbadge/sqlx/pull/1161
-[#1160]: https://github.com/launchbadge/sqlx/pull/1160
-[#1156]: https://github.com/launchbadge/sqlx/pull/1156
+[#1161]: https://github.com/launchbadge/rusql/pull/1161
+[#1160]: https://github.com/launchbadge/rusql/pull/1160
+[#1156]: https://github.com/launchbadge/rusql/pull/1156
 
 ## 0.5.1 - 2021-02-04
 
--   Update sqlx-rt to 0.3.
+-   Update rusql-rt to 0.3.
 
 ## 0.5.0 - 2021-02-04
 
@@ -705,8 +705,8 @@ A large bugfix release, including but not limited to:
         .fetch_all(&mut conn).await?;
     ```
 
--   [[#940]] Rename the `#[sqlx(rename)]` attribute used to specify the type name on the database
-    side to `#[sqlx(type_name)]` [[@jplatte]].
+-   [[#940]] Rename the `#[rusql(rename)]` attribute used to specify the type name on the database
+    side to `#[rusql(type_name)]` [[@jplatte]].
 
 -   [[#976]] Rename the `DbDone` types to `DbQueryResult`. [[@jplatte]]
 
@@ -729,18 +729,18 @@ A large bugfix release, including but not limited to:
 
 -   [[#918]] Recover from dropping `wait_for_conn` inside Pool. [[@antialize]]
 
-[#821]: https://github.com/launchbadge/sqlx/issues/821
-[#918]: https://github.com/launchbadge/sqlx/pull/918
-[#919]: https://github.com/launchbadge/sqlx/pull/919
-[#983]: https://github.com/launchbadge/sqlx/pull/983
-[#940]: https://github.com/launchbadge/sqlx/pull/940
-[#976]: https://github.com/launchbadge/sqlx/pull/976
-[#979]: https://github.com/launchbadge/sqlx/pull/979
-[#998]: https://github.com/launchbadge/sqlx/pull/998
-[#983]: https://github.com/launchbadge/sqlx/pull/983
-[#1002]: https://github.com/launchbadge/sqlx/pull/1002
-[#1007]: https://github.com/launchbadge/sqlx/pull/1007
-[#1022]: https://github.com/launchbadge/sqlx/pull/1022
+[#821]: https://github.com/launchbadge/rusql/issues/821
+[#918]: https://github.com/launchbadge/rusql/pull/918
+[#919]: https://github.com/launchbadge/rusql/pull/919
+[#983]: https://github.com/launchbadge/rusql/pull/983
+[#940]: https://github.com/launchbadge/rusql/pull/940
+[#976]: https://github.com/launchbadge/rusql/pull/976
+[#979]: https://github.com/launchbadge/rusql/pull/979
+[#998]: https://github.com/launchbadge/rusql/pull/998
+[#983]: https://github.com/launchbadge/rusql/pull/983
+[#1002]: https://github.com/launchbadge/rusql/pull/1002
+[#1007]: https://github.com/launchbadge/rusql/pull/1007
+[#1022]: https://github.com/launchbadge/rusql/pull/1022
 
 ## 0.4.2 - 2020-12-19
 
@@ -756,7 +756,7 @@ A large bugfix release, including but not limited to:
     });
     ```
 
--   [[#874]] Recognize `1` as `true` for `SQLX_OFFLINE [[@Pleto]]
+-   [[#874]] Recognize `1` as `true` for `RUSQL_OFFLINE [[@Pleto]]
 
 -   [[#747]] [[#867]] Replace `lru-cache` with `hashlink` [[@chertov]]
 
@@ -784,22 +784,22 @@ A large bugfix release, including but not limited to:
 
 -   [[#880]] Consider `utf8mb4_general_ci` as a string [[@mcronce]]
 
-[#908]: https://github.com/launchbadge/sqlx/pull/908
-[#895]: https://github.com/launchbadge/sqlx/pull/895
-[#893]: https://github.com/launchbadge/sqlx/pull/893
-[#889]: https://github.com/launchbadge/sqlx/pull/889
-[#880]: https://github.com/launchbadge/sqlx/pull/880
-[#878]: https://github.com/launchbadge/sqlx/pull/878
-[#876]: https://github.com/launchbadge/sqlx/pull/876
-[#874]: https://github.com/launchbadge/sqlx/pull/874
-[#867]: https://github.com/launchbadge/sqlx/pull/867
-[#860]: https://github.com/launchbadge/sqlx/pull/860
-[#854]: https://github.com/launchbadge/sqlx/pull/854
-[#852]: https://github.com/launchbadge/sqlx/pull/852
-[#850]: https://github.com/launchbadge/sqlx/pull/850
-[#845]: https://github.com/launchbadge/sqlx/pull/845
-[#839]: https://github.com/launchbadge/sqlx/pull/839
-[#747]: https://github.com/launchbadge/sqlx/issues/747
+[#908]: https://github.com/launchbadge/rusql/pull/908
+[#895]: https://github.com/launchbadge/rusql/pull/895
+[#893]: https://github.com/launchbadge/rusql/pull/893
+[#889]: https://github.com/launchbadge/rusql/pull/889
+[#880]: https://github.com/launchbadge/rusql/pull/880
+[#878]: https://github.com/launchbadge/rusql/pull/878
+[#876]: https://github.com/launchbadge/rusql/pull/876
+[#874]: https://github.com/launchbadge/rusql/pull/874
+[#867]: https://github.com/launchbadge/rusql/pull/867
+[#860]: https://github.com/launchbadge/rusql/pull/860
+[#854]: https://github.com/launchbadge/rusql/pull/854
+[#852]: https://github.com/launchbadge/rusql/pull/852
+[#850]: https://github.com/launchbadge/rusql/pull/850
+[#845]: https://github.com/launchbadge/rusql/pull/845
+[#839]: https://github.com/launchbadge/rusql/pull/839
+[#747]: https://github.com/launchbadge/rusql/issues/747
 
 ## 0.4.1 – 2020-11-13
 
@@ -807,7 +807,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 ## 0.4.0 - 2020-11-12
 
--   [[#774]] Fix usage of SQLx derives with other derive crates [[@NyxCode]]
+-   [[#774]] Fix usage of RuSQL derives with other derive crates [[@NyxCode]]
 
 -   [[#762]] Fix `migrate!()` (with no params) [[@esemeniuc]]
 
@@ -847,18 +847,18 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#739]] Fix minor protocol detail with `iteration-count` that was blocking Vitess [[@mcronce]]
 
-[#774]: https://github.com/launchbadge/sqlx/pull/774
-[#789]: https://github.com/launchbadge/sqlx/pull/789
-[#784]: https://github.com/launchbadge/sqlx/pull/784
-[#781]: https://github.com/launchbadge/sqlx/pull/781
-[#762]: https://github.com/launchbadge/sqlx/pull/762
-[#755]: https://github.com/launchbadge/sqlx/pull/755
-[#745]: https://github.com/launchbadge/sqlx/pull/745
-[#743]: https://github.com/launchbadge/sqlx/pull/743
-[#742]: https://github.com/launchbadge/sqlx/pull/742
-[#735]: https://github.com/launchbadge/sqlx/pull/735
-[#739]: https://github.com/launchbadge/sqlx/pull/739
-[#718]: https://github.com/launchbadge/sqlx/pull/718
+[#774]: https://github.com/launchbadge/rusql/pull/774
+[#789]: https://github.com/launchbadge/rusql/pull/789
+[#784]: https://github.com/launchbadge/rusql/pull/784
+[#781]: https://github.com/launchbadge/rusql/pull/781
+[#762]: https://github.com/launchbadge/rusql/pull/762
+[#755]: https://github.com/launchbadge/rusql/pull/755
+[#745]: https://github.com/launchbadge/rusql/pull/745
+[#743]: https://github.com/launchbadge/rusql/pull/743
+[#742]: https://github.com/launchbadge/rusql/pull/742
+[#735]: https://github.com/launchbadge/rusql/pull/735
+[#739]: https://github.com/launchbadge/rusql/pull/739
+[#718]: https://github.com/launchbadge/rusql/pull/718
 
 ## 0.4.0-beta.1 - 2020-07-27
 
@@ -931,7 +931,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
         .connect("postgres:// …").await?
     ```
 
--   [[#308]] [[#495]] Extend `derive(FromRow)` with support for `#[sqlx(default)]` on fields to allow reading in a partial query [[@OriolMunoz]]
+-   [[#308]] [[#495]] Extend `derive(FromRow)` with support for `#[rusql(default)]` on fields to allow reading in a partial query [[@OriolMunoz]]
 
 -   [[#454]] [[#456]] Support `rust_decimal::Decimal` as an alternative to `bigdecimal::BigDecimal` for `NUMERIC` columns in MySQL and PostgreSQL [[@pimeys]]
 
@@ -987,25 +987,25 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 ### Removed
 
-[#127]: https://github.com/launchbadge/sqlx/issues/127
-[#174]: https://github.com/launchbadge/sqlx/issues/174
-[#145]: https://github.com/launchbadge/sqlx/issues/145
-[#164]: https://github.com/launchbadge/sqlx/issues/164
-[#167]: https://github.com/launchbadge/sqlx/issues/167
-[#181]: https://github.com/launchbadge/sqlx/issues/181
-[#197]: https://github.com/launchbadge/sqlx/issues/197
-[#263]: https://github.com/launchbadge/sqlx/issues/263
-[#308]: https://github.com/launchbadge/sqlx/issues/308
-[#418]: https://github.com/launchbadge/sqlx/issues/418
-[#430]: https://github.com/launchbadge/sqlx/issues/430
-[#449]: https://github.com/launchbadge/sqlx/issues/449
-[#499]: https://github.com/launchbadge/sqlx/issues/499
-[#454]: https://github.com/launchbadge/sqlx/issues/454
-[#271]: https://github.com/launchbadge/sqlx/pull/271
-[#444]: https://github.com/launchbadge/sqlx/pull/444
-[#438]: https://github.com/launchbadge/sqlx/pull/438
-[#495]: https://github.com/launchbadge/sqlx/pull/495
-[#495]: https://github.com/launchbadge/sqlx/pull/495
+[#127]: https://github.com/launchbadge/rusql/issues/127
+[#174]: https://github.com/launchbadge/rusql/issues/174
+[#145]: https://github.com/launchbadge/rusql/issues/145
+[#164]: https://github.com/launchbadge/rusql/issues/164
+[#167]: https://github.com/launchbadge/rusql/issues/167
+[#181]: https://github.com/launchbadge/rusql/issues/181
+[#197]: https://github.com/launchbadge/rusql/issues/197
+[#263]: https://github.com/launchbadge/rusql/issues/263
+[#308]: https://github.com/launchbadge/rusql/issues/308
+[#418]: https://github.com/launchbadge/rusql/issues/418
+[#430]: https://github.com/launchbadge/rusql/issues/430
+[#449]: https://github.com/launchbadge/rusql/issues/449
+[#499]: https://github.com/launchbadge/rusql/issues/499
+[#454]: https://github.com/launchbadge/rusql/issues/454
+[#271]: https://github.com/launchbadge/rusql/pull/271
+[#444]: https://github.com/launchbadge/rusql/pull/444
+[#438]: https://github.com/launchbadge/rusql/pull/438
+[#495]: https://github.com/launchbadge/rusql/pull/495
+[#495]: https://github.com/launchbadge/rusql/pull/495
 
 ## 0.3.5 - 2020-05-06
 
@@ -1023,7 +1023,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#252]] [[#297]] Derive several traits for the `Json<T>` wrapper type [[@meh]]
 
--   [[#261]] Add support for `#[sqlx(rename_all = "snake_case")]` to `#[derive(Type)]` [[@shssoichiro]]
+-   [[#261]] Add support for `#[rusql(rename_all = "snake_case")]` to `#[derive(Type)]` [[@shssoichiro]]
 
 -   [[#253]] Add support for UNIX domain sockets to PostgreSQL [[@Nilix007]]
 
@@ -1033,18 +1033,18 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#267]] Support Cargo.toml relative `.env` files; allows for each crate in a workspace to use their own `.env` file and thus their own `DATABASE_URL` [[@xyzd]]
 
-[#252]: https://github.com/launchbadge/sqlx/pull/252
-[#261]: https://github.com/launchbadge/sqlx/pull/261
-[#256]: https://github.com/launchbadge/sqlx/pull/256
-[#259]: https://github.com/launchbadge/sqlx/pull/259
-[#253]: https://github.com/launchbadge/sqlx/pull/253
-[#297]: https://github.com/launchbadge/sqlx/pull/297
-[#251]: https://github.com/launchbadge/sqlx/pull/251
-[#275]: https://github.com/launchbadge/sqlx/pull/275
-[#267]: https://github.com/launchbadge/sqlx/pull/267
-[#268]: https://github.com/launchbadge/sqlx/pull/268
-[#281]: https://github.com/launchbadge/sqlx/pull/281
-[#284]: https://github.com/launchbadge/sqlx/pull/284
+[#252]: https://github.com/launchbadge/rusql/pull/252
+[#261]: https://github.com/launchbadge/rusql/pull/261
+[#256]: https://github.com/launchbadge/rusql/pull/256
+[#259]: https://github.com/launchbadge/rusql/pull/259
+[#253]: https://github.com/launchbadge/rusql/pull/253
+[#297]: https://github.com/launchbadge/rusql/pull/297
+[#251]: https://github.com/launchbadge/rusql/pull/251
+[#275]: https://github.com/launchbadge/rusql/pull/275
+[#267]: https://github.com/launchbadge/rusql/pull/267
+[#268]: https://github.com/launchbadge/rusql/pull/268
+[#281]: https://github.com/launchbadge/rusql/pull/281
+[#284]: https://github.com/launchbadge/rusql/pull/284
 
 ## 0.3.4 - 2020-04-10
 
@@ -1062,15 +1062,15 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#234]] Add support for `NUMERIC` in MySQL with the `bigdecimal` crate [[@xiaopengli89]]
 
--   [[#227]] Support `#[sqlx(rename = "new_name")]` on struct fields within a `FromRow` derive [[@sidred]]
+-   [[#227]] Support `#[rusql(rename = "new_name")]` on struct fields within a `FromRow` derive [[@sidred]]
 
-[#228]: https://github.com/launchbadge/sqlx/issues/228
-[#231]: https://github.com/launchbadge/sqlx/issues/231
-[#237]: https://github.com/launchbadge/sqlx/issues/237
-[#241]: https://github.com/launchbadge/sqlx/issues/241
-[#227]: https://github.com/launchbadge/sqlx/pull/227
-[#234]: https://github.com/launchbadge/sqlx/pull/234
-[#238]: https://github.com/launchbadge/sqlx/pull/238
+[#228]: https://github.com/launchbadge/rusql/issues/228
+[#231]: https://github.com/launchbadge/rusql/issues/231
+[#237]: https://github.com/launchbadge/rusql/issues/237
+[#241]: https://github.com/launchbadge/rusql/issues/241
+[#227]: https://github.com/launchbadge/rusql/pull/227
+[#234]: https://github.com/launchbadge/rusql/pull/234
+[#238]: https://github.com/launchbadge/rusql/pull/238
 
 ## 0.3.3 - 2020-04-01
 
@@ -1084,9 +1084,9 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#213]] Remove matches dependency and use matches macro from std [[@nrjais]]
 
-[#216]: https://github.com/launchbadge/sqlx/pull/216
-[#214]: https://github.com/launchbadge/sqlx/pull/214
-[#213]: https://github.com/launchbadge/sqlx/pull/213
+[#216]: https://github.com/launchbadge/rusql/pull/216
+[#214]: https://github.com/launchbadge/rusql/pull/214
+[#213]: https://github.com/launchbadge/rusql/pull/213
 
 ## 0.3.2 - 2020-03-31
 
@@ -1094,7 +1094,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#212]] Removed sneaky `println!` in `MySqlCursor`
 
-[#212]: https://github.com/launchbadge/sqlx/issues/212
+[#212]: https://github.com/launchbadge/rusql/issues/212
 
 ## 0.3.1 - 2020-03-30
 
@@ -1106,41 +1106,41 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#200]] Fixes the incorrect handling of raw (`r#...`) fields of a struct in the `FromRow` derive [[@sidred]]
 
-[#200]: https://github.com/launchbadge/sqlx/pull/200
-[#203]: https://github.com/launchbadge/sqlx/issues/203
-[#204]: https://github.com/launchbadge/sqlx/issues/204
+[#200]: https://github.com/launchbadge/rusql/pull/200
+[#203]: https://github.com/launchbadge/rusql/issues/203
+[#204]: https://github.com/launchbadge/rusql/issues/204
 
 ## 0.3.0 - 2020-03-29
 
 ### Breaking Changes
 
--   `sqlx::Row` now has a lifetime (`'c`) tied to the database connection. In effect, this means that you cannot store `Row`s or collect
-    them into a collection. `Query` (returned from `sqlx::query()`) has `map()` which takes a function to map from the `Row` to
+-   `rusql::Row` now has a lifetime (`'c`) tied to the database connection. In effect, this means that you cannot store `Row`s or collect
+    them into a collection. `Query` (returned from `rusql::query()`) has `map()` which takes a function to map from the `Row` to
     another type to make this transition easier.
 
     In 0.2.x
 
     ```rust
-    let rows = sqlx::query("SELECT 1")
+    let rows = rusql::query("SELECT 1")
         .fetch_all(&mut conn).await?;
     ```
 
     In 0.3.x
 
     ```rust
-    let values: Vec<i32> = sqlx::query("SELECT 1")
+    let values: Vec<i32> = rusql::query("SELECT 1")
         .map(|row: PgRow| row.get(0))
         .fetch_all(&mut conn).await?;
     ```
 
-    To assist with the above, `sqlx::query_as()` now supports querying directly into tuples (up to 9 elements) or
+    To assist with the above, `rusql::query_as()` now supports querying directly into tuples (up to 9 elements) or
     struct types with a `#[derive(FromRow)]`.
 
     ```rust
     // This extension trait is needed until a rust bug is fixed
-    use sqlx::postgres::PgQueryAs;
+    use rusql::postgres::PgQueryAs;
 
-    let values: Vec<(i32, bool)> = sqlx::query_as("SELECT 1, false")
+    let values: Vec<(i32, bool)> = rusql::query_as("SELECT 1, false")
         .fetch_all(&mut conn).await?;
     ```
 
@@ -1168,7 +1168,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
         the SQL type.
 
         ```rust
-        #[derive(sqlx::Type)]
+        #[derive(rusql::Type)]
         #[repr(transparent)]
         struct Meters(i32);
         ```
@@ -1176,23 +1176,23 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
     -   Enumerations may be defined in Rust and can match SQL by integer discriminant or variant name.
 
         ```rust
-        #[derive(sqlx::Type)]
+        #[derive(rusql::Type)]
         #[repr(i32)] // Expects a INT in SQL
         enum Color { Red = 1, Green = 2, Blue = 3 }
         ```
 
         ```rust
-        #[derive(sqlx::Type)]
-        #[sqlx(rename = "TEXT")] // May also be the name of a user defined enum type
-        #[sqlx(rename_all = "lowercase")] // similar to serde rename_all
+        #[derive(rusql::Type)]
+        #[rusql(rename = "TEXT")] // May also be the name of a user defined enum type
+        #[rusql(rename_all = "lowercase")] // similar to serde rename_all
         enum Color { Red, Green, Blue } // expects 'red', 'green', or 'blue'
         ```
 
     -   **Postgres** further supports user-defined composite types.
 
         ```rust
-        #[derive(sqlx::Type)]
-        #[sqlx(rename = "interface_type")]
+        #[derive(rusql::Type)]
+        #[rusql(rename = "interface_type")]
         struct InterfaceType {
             name: String,
             supplier_id: i32,
@@ -1252,7 +1252,7 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
     prepared API (notably Postgres and MySQL send data back in TEXT mode as opposed to in BINARY mode).
 
     ```rust
-    use sqlx::Executor;
+    use rusql::Executor;
 
     // Set the time zone parameter
     conn.execute("SET TIME ZONE LOCAL;").await
@@ -1271,14 +1271,14 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
     you will have a `query::Map` value that has the former methods available.
 
     ```rust
-    let values: Vec<i32> = sqlx::query("SELECT 1")
+    let values: Vec<i32> = rusql::query("SELECT 1")
         .map(|row: PgRow| row.get(0))
         .fetch_all(&mut conn).await?;
     ```
 
 ### Fixed
 
--   [[#62]] [[#130]] [[#135]] Remove explicit set of `IntervalStyle`. Allow usage of SQLx for CockroachDB and potentially PgBouncer. [[@bmisiak]]
+-   [[#62]] [[#130]] [[#135]] Remove explicit set of `IntervalStyle`. Allow usage of RuSQL for CockroachDB and potentially PgBouncer. [[@bmisiak]]
 
 -   [[#108]] Allow nullable and borrowed values to be used as arguments in `query!` and `query_as!`. For example, where the column would
     resolve to `String` in Rust (TEXT, VARCHAR, etc.), you may now use `Option<String>`, `Option<&str>`, or `&str` instead. [[@abonander]]
@@ -1290,21 +1290,21 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
     optional feature `chrono` required for type DATE of column #1 ("now")
     ```
 
-[#62]: https://github.com/launchbadge/sqlx/issues/62
-[#130]: https://github.com/launchbadge/sqlx/issues/130
-[#98]: https://github.com/launchbadge/sqlx/pull/98
-[#97]: https://github.com/launchbadge/sqlx/pull/97
-[#134]: https://github.com/launchbadge/sqlx/pull/134
-[#129]: https://github.com/launchbadge/sqlx/pull/129
-[#131]: https://github.com/launchbadge/sqlx/pull/131
-[#135]: https://github.com/launchbadge/sqlx/pull/135
-[#108]: https://github.com/launchbadge/sqlx/pull/108
+[#62]: https://github.com/launchbadge/rusql/issues/62
+[#130]: https://github.com/launchbadge/rusql/issues/130
+[#98]: https://github.com/launchbadge/rusql/pull/98
+[#97]: https://github.com/launchbadge/rusql/pull/97
+[#134]: https://github.com/launchbadge/rusql/pull/134
+[#129]: https://github.com/launchbadge/rusql/pull/129
+[#131]: https://github.com/launchbadge/rusql/pull/131
+[#135]: https://github.com/launchbadge/rusql/pull/135
+[#108]: https://github.com/launchbadge/rusql/pull/108
 
 ## 0.2.6 - 2020-03-10
 
 ### Added
 
--   [[#114]] Export `sqlx_core::Transaction` [[@thedodd]]
+-   [[#114]] Export `rusql_core::Transaction` [[@thedodd]]
 
 ### Fixed
 
@@ -1312,11 +1312,11 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#105]] [[#109]] Allow trailing commas in query macros [[@timmythetiny]]
 
-[#105]: https://github.com/launchbadge/sqlx/pull/105
-[#109]: https://github.com/launchbadge/sqlx/pull/109
-[#114]: https://github.com/launchbadge/sqlx/pull/114
-[#125]: https://github.com/launchbadge/sqlx/pull/125
-[#126]: https://github.com/launchbadge/sqlx/pull/126
+[#105]: https://github.com/launchbadge/rusql/pull/105
+[#109]: https://github.com/launchbadge/rusql/pull/109
+[#114]: https://github.com/launchbadge/rusql/pull/114
+[#125]: https://github.com/launchbadge/rusql/pull/125
+[#126]: https://github.com/launchbadge/rusql/pull/126
 [@timmythetiny]: https://github.com/timmythetiny
 [@thedodd]: https://github.com/thedodd
 
@@ -1335,23 +1335,23 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [@100] Fix `FLOAT` and `DOUBLE` decoding in MySQL
 
-[#84]: https://github.com/launchbadge/sqlx/issues/84
-[#100]: https://github.com/launchbadge/sqlx/issues/100
-[#104]: https://github.com/launchbadge/sqlx/issues/104
+[#84]: https://github.com/launchbadge/rusql/issues/84
+[#100]: https://github.com/launchbadge/rusql/issues/100
+[#104]: https://github.com/launchbadge/rusql/issues/104
 
 ### Added
 
 -   [[#72]] Add `PgTypeInfo::with_oid` to allow simple construction of `PgTypeInfo` which enables `HasSqlType`
-    to be implemented by downstream consumers of SQLx [[@jplatte]]
+    to be implemented by downstream consumers of RuSQL [[@jplatte]]
 
 -   [[#96]] Add support for returning columns from `query!` with a name of a rust keyword by
     using raw identifiers [[@yaahc]]
 
--   [[#71]] Implement derives for `Encode` and `Decode`. This is the first step to supporting custom types in SQLx. [[@Freax13]]
+-   [[#71]] Implement derives for `Encode` and `Decode`. This is the first step to supporting custom types in RuSQL. [[@Freax13]]
 
-[#72]: https://github.com/launchbadge/sqlx/issues/72
-[#96]: https://github.com/launchbadge/sqlx/issues/96
-[#71]: https://github.com/launchbadge/sqlx/issues/71
+[#72]: https://github.com/launchbadge/rusql/issues/72
+[#96]: https://github.com/launchbadge/rusql/issues/96
+[#71]: https://github.com/launchbadge/rusql/issues/71
 
 ## 0.2.4 - 2020-01-18
 
@@ -1371,15 +1371,15 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#57]] Add support for unsigned integers and binary types in `query!` for MySQL [[@mehcode]]
 
-[#57]: https://github.com/launchbadge/sqlx/issues/57
+[#57]: https://github.com/launchbadge/rusql/issues/57
 
 ### Fixed
 
 -   Fix stall when requesting TLS from a Postgres server that explicitly does not support TLS (such as postgres running inside docker) [[@abonander]]
 
--   [[#66]] Declare used features for `tokio` in `sqlx-macros` explicitly
+-   [[#66]] Declare used features for `tokio` in `rusql-macros` explicitly
 
-[#66]: https://github.com/launchbadge/sqlx/issues/66
+[#66]: https://github.com/launchbadge/rusql/issues/66
 
 ## 0.2.1 - 2020-01-16
 
@@ -1387,25 +1387,25 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 -   [[#64], [#65]] Fix decoding of Rows containing NULLs in MySQL [[@danielakhterov]]
 
-[#64]: https://github.com/launchbadge/sqlx/pull/64
-[#65]: https://github.com/launchbadge/sqlx/pull/65
+[#64]: https://github.com/launchbadge/rusql/pull/64
+[#65]: https://github.com/launchbadge/rusql/pull/65
 
 -   [[#55]] Use a shared tokio runtime for the `query!` macro compile-time execution (under the `runtime-tokio` feature) [[@udoprog]]
 
-[#55]: https://github.com/launchbadge/sqlx/pull/55
+[#55]: https://github.com/launchbadge/rusql/pull/55
 
 ## 0.2.0 - 2020-01-15
 
 ### Fixed
 
--   https://github.com/launchbadge/sqlx/issues/47
+-   https://github.com/launchbadge/rusql/issues/47
 
 ### Added
 
 -   Support Tokio through an optional `runtime-tokio` feature.
 
 -   Support SQL transactions. You may now use the `begin()` function on `Pool` or `Connection` to
-    start a new SQL transaction. This returns `sqlx::Transaction` which will `ROLLBACK` on `Drop`
+    start a new SQL transaction. This returns `rusql::Transaction` which will `ROLLBACK` on `Drop`
     or can be explicitly `COMMIT` using `commit()`.
 
 -   Support TLS connections.
@@ -1414,21 +1414,21 @@ Fix docs.rs build by enabling a runtime feature in the docs.rs metadata in `Carg
 
 ### Fixed
 
--   https://github.com/launchbadge/sqlx/issues/43
+-   https://github.com/launchbadge/rusql/issues/43
 
--   https://github.com/launchbadge/sqlx/issues/40
+-   https://github.com/launchbadge/rusql/issues/40
 
 ### Added
 
--   Support for `SCRAM-SHA-256` authentication in Postgres [#37](https://github.com/launchbadge/sqlx/pull/37) [@danielakhterov](https://github.com/danielakhterov)
+-   Support for `SCRAM-SHA-256` authentication in Postgres [#37](https://github.com/launchbadge/rusql/pull/37) [@danielakhterov](https://github.com/danielakhterov)
 
--   Implement `Debug` for Pool [#42](https://github.com/launchbadge/sqlx/pull/42) [@prettynatty](https://github.com/prettynatty)
+-   Implement `Debug` for Pool [#42](https://github.com/launchbadge/rusql/pull/42) [@prettynatty](https://github.com/prettynatty)
 
 ## 0.1.3 - 2020-01-06
 
 ### Fixed
 
--   https://github.com/launchbadge/sqlx/issues/30
+-   https://github.com/launchbadge/rusql/issues/30
 
 ## 0.1.2 - 2020-01-03
 
