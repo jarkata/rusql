@@ -40,7 +40,6 @@ pub use rusql_core::migrate;
         feature = "mysql",
         feature = "sqlite",
         feature = "postgres",
-        feature = "mssql"
     ),
     feature = "any"
 ))]
@@ -49,10 +48,6 @@ pub use rusql_core::any::{self, Any, AnyConnection, AnyExecutor, AnyPool};
 #[cfg(feature = "mysql")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mysql")))]
 pub use rusql_core::mysql::{self, MySql, MySqlConnection, MySqlExecutor, MySqlPool};
-
-#[cfg(feature = "mssql")]
-#[cfg_attr(docsrs, doc(cfg(feature = "mssql")))]
-pub use rusql_core::mssql::{self, Mssql, MssqlConnection, MssqlExecutor, MssqlPool};
 
 #[cfg(feature = "postgres")]
 #[cfg_attr(docsrs, doc(cfg(feature = "postgres")))]
@@ -75,10 +70,6 @@ pub use rusql_macros::{FromRow, Type};
 // have docs out-of-line quite easily.
 #[doc = include_str!("macros/test.md")]
 pub use rusql_macros::test;
-
-#[doc(hidden)]
-#[cfg(feature = "migrate")]
-pub use rusql_core::testing;
 
 #[doc(hidden)]
 pub use rusql_core::test_block_on;

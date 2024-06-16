@@ -99,14 +99,6 @@ pub mod sqlite;
 #[cfg_attr(docsrs, doc(cfg(feature = "mysql")))]
 pub mod mysql;
 
-#[cfg(feature = "mssql")]
-#[cfg_attr(docsrs, doc(cfg(feature = "mssql")))]
-pub mod mssql;
-
-// Implements test support with automatic DB management.
-#[cfg(feature = "migrate")]
-pub mod testing;
-
 pub use rusql_rt::test_block_on;
 
 /// rusql uses ahash for increased performance, at the cost of reduced DoS resistance.
