@@ -75,12 +75,7 @@ impl Column for AnyColumn {
     feature = "sqlite"
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
-+ ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
-+ ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
+ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>> + ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
 
 #[cfg(all(
@@ -89,12 +84,7 @@ ColumnIndex<PgRow>
     feature = "sqlite"
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-    + ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
-    + ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
+    I: ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>> + ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
 
 #[cfg(all(
@@ -102,10 +92,7 @@ impl<I: ?Sized> AnyColumnIndex for I where
     all(feature = "postgres", feature = "sqlite")
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
-+ ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
+ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
 
 #[cfg(all(
@@ -113,10 +100,7 @@ ColumnIndex<PgRow>
     all(feature = "postgres", feature = "sqlite")
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-    + ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
+    I: ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>>
 {}
 
 #[cfg(all(
@@ -124,10 +108,7 @@ impl<I: ?Sized> AnyColumnIndex for I where
     all(feature = "postgres", feature = "mysql")
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
-+ ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
+ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
 {}
 
 #[cfg(all(
@@ -135,10 +116,7 @@ ColumnIndex<PgRow>
     all(feature = "postgres", feature = "mysql")
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-    + ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
+    I: ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
 {}
 
 #[cfg(all(
@@ -146,10 +124,7 @@ impl<I: ?Sized> AnyColumnIndex for I where
     all(feature = "sqlite", feature = "mysql")
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
-+ ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
+ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
 {}
 
 #[cfg(all(
@@ -157,34 +132,7 @@ ColumnIndex<SqliteRow>
     all(feature = "sqlite", feature = "mysql")
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
-    + ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
-{}
-
-// only 2 (6)
-
-#[cfg(all(
-    not(any(feature = "sqlite")),
-    all(feature = "postgres", feature = "mysql")
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
-+ ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "sqlite")),
-    all(feature = "postgres", feature = "mysql")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-    + ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
+    I: ColumnIndex<SqliteRow> + for<'q> ColumnIndex<SqliteStatement<'q>> + ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
 {}
 
 #[cfg(all(
@@ -192,110 +140,12 @@ impl<I: ?Sized> AnyColumnIndex for I where
     all(feature = "postgres")
 ))]
 pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
+ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>>
 {}
 
 #[cfg(all(
     not(any(feature = "mysql", feature = "sqlite")),
     all(feature = "postgres")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "mysql")),
-    all(feature = "postgres", feature = "sqlite")
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<PgRow>
-+ for<'q> ColumnIndex<PgStatement<'q>>
-+ ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "mysql")),
-    all(feature = "postgres", feature = "sqlite")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<PgRow>
-    + for<'q> ColumnIndex<PgStatement<'q>>
-    + ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres", feature = "sqlite")),
-    all(feature = "mysql")
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres", feature = "sqlite")),
-    all(feature = "mysql")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres", feature = "mysql")),
-    all(feature = "sqlite")
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres", feature = "mysql")),
-    all(feature = "sqlite")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres")),
-    all(feature = "mysql", feature = "sqlite")
-))]
-pub trait AnyColumnIndex:
-ColumnIndex<MySqlRow>
-+ for<'q> ColumnIndex<MySqlStatement<'q>>
-+ ColumnIndex<SqliteRow>
-+ for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-#[cfg(all(
-    not(any(feature = "postgres")),
-    all(feature = "mysql", feature = "sqlite")
-))]
-impl<I: ?Sized> AnyColumnIndex for I where
-    I: ColumnIndex<MySqlRow>
-    + for<'q> ColumnIndex<MySqlStatement<'q>>
-    + ColumnIndex<SqliteRow>
-    + for<'q> ColumnIndex<SqliteStatement<'q>>
-{}
-
-// only 1 (4)
-
-#[cfg(all(
-    not(any(feature = "mysql", feature = "sqlite")),
-    feature = "postgres"
-))]
-pub trait AnyColumnIndex: ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>> {}
-
-#[cfg(all(
-    not(any(feature = "mysql", feature = "sqlite")),
-    feature = "postgres"
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
     I: ColumnIndex<PgRow> + for<'q> ColumnIndex<PgStatement<'q>>
@@ -303,17 +153,38 @@ impl<I: ?Sized> AnyColumnIndex for I where
 
 #[cfg(all(
     not(any(feature = "postgres", feature = "sqlite")),
-    feature = "mysql"
+    all(feature = "mysql")
 ))]
-pub trait AnyColumnIndex: ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>> {}
+pub trait AnyColumnIndex:
+ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
+{}
 
 #[cfg(all(
     not(any(feature = "postgres", feature = "sqlite")),
-    feature = "mysql"
+    all(feature = "mysql")
 ))]
 impl<I: ?Sized> AnyColumnIndex for I where
     I: ColumnIndex<MySqlRow> + for<'q> ColumnIndex<MySqlStatement<'q>>
 {}
+
+#[cfg(all(
+    not(any(feature = "postgres", feature = "mysql")),
+    all(feature = "sqlite")
+))]
+pub trait AnyColumnIndex:
+ColumnIndex<SqliteRow>
++ for<'q> ColumnIndex<SqliteStatement<'q>>
+{}
+
+#[cfg(all(
+    not(any(feature = "postgres", feature = "mysql")),
+    all(feature = "sqlite")
+))]
+impl<I: ?Sized> AnyColumnIndex for I where
+    I: ColumnIndex<SqliteRow>
+    + for<'q> ColumnIndex<SqliteStatement<'q>>
+{}
+
 
 #[cfg(all(
     not(any(feature = "mysql", feature = "postgres")),
