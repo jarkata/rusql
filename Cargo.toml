@@ -43,7 +43,7 @@ offline = ["rusql-macros/offline", "rusql-core/offline"]
 
 # intended mainly for CI and docs
 all = ["tls", "all-databases", "all-types"]
-all-databases = ["mysql", "sqlite", "postgres", "mssql", "any"]
+all-databases = ["mysql", "sqlite", "postgres", "any"]
 all-types = [
     "bigdecimal",
     "decimal",
@@ -98,7 +98,6 @@ any = ["rusql-core/any"]
 postgres = ["rusql-core/postgres", "rusql-macros/postgres"]
 mysql = ["rusql-core/mysql", "rusql-macros/mysql"]
 sqlite = ["rusql-core/sqlite", "rusql-macros/sqlite"]
-mssql = ["rusql-core/mssql", "rusql-macros/mssql"]
 
 # types
 bigdecimal = ["rusql-core/bigdecimal", "rusql-macros/bigdecimal"]
