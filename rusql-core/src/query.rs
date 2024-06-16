@@ -153,6 +153,17 @@ where
         executor.execute(self).await
     }
 
+    /// Execute the query and return the total number of rows affected.
+    #[inline]
+    pub async fn bind_conn<'e, 'c: 'e, E>(self, executor: E) -> Result<DB::QueryResult, Error>
+        where
+            'q: 'e,
+            A: 'e,
+            E: Executor<'c, Database = DB>,
+    {
+        executor.execute(self).await
+    }
+
     /// Execute multiple queries and return the rows affected from each query, in a stream.
     #[inline]
     pub async fn execute_many<'e, 'c: 'e, E>(
@@ -430,6 +441,19 @@ where
 pub fn query<DB>(sql: &str) -> Query<'_, DB, <DB as HasArguments<'_>>::Arguments>
 where
     DB: Database,
+{
+    Query {
+        database: PhantomData,
+        arguments: Some(Default::default()),
+        statement: Either::Left(sql),
+        persistent: true,
+    }
+}
+
+/// Make a SQL query.
+pub fn execute_update<DB>(sql: &str) -> Query<'_, DB, <DB as HasArguments<'_>>::Arguments>
+    where
+        DB: Database,
 {
     Query {
         database: PhantomData,
