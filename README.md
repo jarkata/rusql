@@ -8,7 +8,7 @@
 <br />
 
 <h2>
-Clone From RuSQL 0.6.3 ;
+Clone From SQLx 0.6.3 ;
 For Study And Keep Tiny Functions
 </h2>
 
