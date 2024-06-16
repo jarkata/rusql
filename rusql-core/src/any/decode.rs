@@ -75,19 +75,6 @@ impl<'r, T> AnyDecode<'r> for T where
     + Type<Sqlite>
 {}
 
-// only 3 (4)
-#[cfg(all(
-    all(feature = "postgres", feature = "mysql", feature = "sqlite")
-))]
-impl<'r, T> AnyDecode<'r> for T where
-    T: Decode<'r, Postgres>
-    + Type<Postgres>
-    + Decode<'r, MySql>
-    + Type<MySql>
-    + Decode<'r, Sqlite>
-    + Type<Sqlite>
-{}
-
 #[cfg(all(
     not(feature = "mysql"),
     all(feature = "postgres", feature = "sqlite")
@@ -155,7 +142,6 @@ impl<'r, T> AnyDecode<'r> for T where
 {}
 
 // only 2 (6)
-
 #[cfg(all(
     not(any(feature = "sqlite")),
     all(feature = "postgres", feature = "mysql")
