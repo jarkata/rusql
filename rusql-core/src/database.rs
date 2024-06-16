@@ -10,20 +10,17 @@
 //! | Database | Version | Driver |
 //! | - | - | - |
 //! | [MariaDB] | 10.1+ | [`mysql`] |
-//! | [Microsoft SQL Server] | 2019 | [`mssql`] |
 //! | [MySQL] | 5.6, 5.7, 8.0 | [`mysql`] |
 //! | [PostgreSQL] | 9.5+ | [`postgres`] |
 //! | [SQLite] | 3.20.1+ | [`sqlite`] |
 //!
 //! [MariaDB]: https://mariadb.com/
 //! [MySQL]: https://www.mysql.com/
-//! [Microsoft SQL Server]: https://www.microsoft.com/en-us/sql-server
 //! [PostgreSQL]: https://www.postgresql.org/
 //! [SQLite]: https://www.sqlite.org/
 //!
 //! [`mysql`]: crate::mysql
 //! [`postgres`]: crate::postgres
-//! [`mssql`]: crate::mssql
 //! [`sqlite`]: crate::sqlite
 //!
 //! ## Tier 2

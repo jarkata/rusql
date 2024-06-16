@@ -419,7 +419,6 @@ macro_rules! query_file_unchecked (
 ///     * Postgres: [crate::postgres::types]
 ///     * MySQL: [crate::mysql::types]
 ///     * SQLite: [crate::sqlite::types]
-///     * MSSQL: [crate::mssql::types]
 /// * If a column may be `NULL`, the corresponding field's type must be wrapped in `Option<_>`.
 /// * Neither the query nor the struct may have unused fields.
 ///

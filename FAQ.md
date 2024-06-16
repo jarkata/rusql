@@ -56,7 +56,6 @@ The ideal solution, of course, is to upgrade your database server to a version t
 
 * MySQL: [has supported TLS 1.2 since 5.6.46](https://dev.mysql.com/doc/refman/5.6/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-supported-protocols). 
 * PostgreSQL: depends on the system OpenSSL version.
-* MSSQL: TLS is not supported yet.
 
 If you're running a third-party database that talks one of these protocols, consult its documentation for supported TLS versions.
 

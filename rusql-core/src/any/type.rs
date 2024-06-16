@@ -29,10 +29,6 @@ macro_rules! impl_any_type {
                         <$ty as crate::types::Type<crate::sqlite::Sqlite>>::compatible(&ty)
                     }
 
-                    #[cfg(feature = "mssql")]
-                    crate::any::type_info::AnyTypeInfoKind::Mssql(ty) => {
-                        <$ty as crate::types::Type<crate::mssql::Mssql>>::compatible(&ty)
-                    }
                 }
             }
         }

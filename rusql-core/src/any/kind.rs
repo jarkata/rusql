@@ -11,9 +11,6 @@ pub enum AnyKind {
 
     #[cfg(feature = "sqlite")]
     Sqlite,
-
-    #[cfg(feature = "mssql")]
-    Mssql,
 }
 
 impl FromStr for AnyKind {
@@ -49,16 +46,6 @@ impl FromStr for AnyKind {
             #[cfg(not(feature = "sqlite"))]
             _ if url.starts_with("sqlite:") => {
                 Err(Error::Configuration("database URL has the scheme of a SQLite database but the `sqlite` feature is not enabled".into()))
-            }
-
-            #[cfg(feature = "mssql")]
-            _ if url.starts_with("mssql:") || url.starts_with("sqlserver:") => {
-                Ok(AnyKind::Mssql)
-            }
-
-            #[cfg(not(feature = "mssql"))]
-            _ if url.starts_with("mssql:") || url.starts_with("sqlserver:") => {
-                Err(Error::Configuration("database URL has the scheme of a MSSQL database but the `mssql` feature is not enabled".into()))
             }
 
             _ => Err(Error::Configuration(format!("unrecognized database url: {:?}", url).into()))

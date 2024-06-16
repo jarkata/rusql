@@ -109,7 +109,6 @@ where
     ///       asserts that the number of parameters is in the range `[0, 65535)`.
     /// * SQLite: 32766 (configurable by [`SQLITE_LIMIT_VARIABLE_NUMBER`])
     ///     * SQLite prior to 3.32.0: 999
-    /// * MSSQL: 2100
     ///
     /// Exceeding these limits may panic (as a sanity check) or trigger a database error at runtime
     /// depending on the implementation.

@@ -16,7 +16,6 @@
 //! Type aliases are provided for each database to make it easier to sprinkle `Pool` through
 //! your codebase:
 //!
-//! * [MssqlPool][crate::mssql::MssqlPool] (MSSQL)
 //! * [MySqlPool][crate::mysql::MySqlPool] (MySQL)
 //! * [PgPool][crate::postgres::PgPool] (PostgreSQL)
 //! * [SqlitePool][crate::sqlite::SqlitePool] (SQLite)
@@ -35,11 +34,6 @@
 //!
 //! For convenience, database-specific type aliases are provided:
 //!
-//! ```rust,ignore
-//! use rusql::mssql::MssqlPool;
-//!
-//! let pool = MssqlPool::connect("mssql://").await?;
-//! ```
 //!
 //! # Using a connection pool
 //!
@@ -59,7 +53,6 @@ use self::inner::PoolInner;
     any(
         feature = "postgres",
         feature = "mysql",
-        feature = "mssql",
         feature = "sqlite"
     ),
     feature = "any"
@@ -133,7 +126,6 @@ pub use self::options::{PoolConnectionMetadata, PoolOptions};
 /// Type aliases are provided for each database to make it easier to sprinkle `Pool` through
 /// your codebase:
 ///
-/// * [MssqlPool][crate::mssql::MssqlPool] (MSSQL)
 /// * [MySqlPool][crate::mysql::MySqlPool] (MySQL)
 /// * [PgPool][crate::postgres::PgPool] (PostgreSQL)
 /// * [SqlitePool][crate::sqlite::SqlitePool] (SQLite)
@@ -181,7 +173,7 @@ pub use self::options::{PoolConnectionMetadata, PoolOptions};
 /// create that many connections up-front so that they are ready to go when a request comes in,
 /// and maintain that number on a best-effort basis for consistent performance.
 ///
-/// ##### 2. Connection Limits (MySQL, MSSQL, Postgres)
+/// ##### 2. Connection Limits (MySQL, Postgres)
 /// Database servers usually place hard limits on the number of connections that are allowed open at
 /// any given time, to maintain performance targets and prevent excessive allocation of resources,
 /// such as RAM, journal files, disk caches, etc.
@@ -195,8 +187,6 @@ pub use self::options::{PoolConnectionMetadata, PoolOptions};
 /// `CONNECTION_ADMIN` privilege so you can still access the server to diagnose problems even
 /// with all connections being used.
 ///
-/// In MSSQL the only documentation for the default maximum limit is that it depends on the version
-/// and server configuration.
 ///
 /// In Postgres, the default limit is typically 100, minus 3 which are reserved for superusers
 /// (putting the default limit for unprivileged users at 97 connections).
@@ -259,7 +249,6 @@ impl<DB: Database> Pool<DB> {
     /// * Postgres: [`PgConnectOptions`][crate::postgres::PgConnectOptions]
     /// * MySQL: [`MySqlConnectOptions`][crate::mysql::MySqlConnectOptions]
     /// * SQLite: [`SqliteConnectOptions`][crate::sqlite::SqliteConnectOptions]
-    /// * MSSQL: [`MssqlConnectOptions`][crate::mssql::MssqlConnectOptions]
     ///
     /// The default configuration is mainly suited for testing and light-duty applications.
     /// For production applications, you'll likely want to make at least few tweaks.
@@ -292,7 +281,6 @@ impl<DB: Database> Pool<DB> {
     /// * Postgres: [`PgConnectOptions`][crate::postgres::PgConnectOptions]
     /// * MySQL: [`MySqlConnectOptions`][crate::mysql::MySqlConnectOptions]
     /// * SQLite: [`SqliteConnectOptions`][crate::sqlite::SqliteConnectOptions]
-    /// * MSSQL: [`MssqlConnectOptions`][crate::mssql::MssqlConnectOptions]
     ///
     /// The default configuration is mainly suited for testing and light-duty applications.
     /// For production applications, you'll likely want to make at least few tweaks.
@@ -338,7 +326,7 @@ impl<DB: Database> Pool<DB> {
     ///
     /// This should eliminate any potential `.await` points between acquiring a connection and
     /// returning it.
-    pub fn acquire(&self) -> impl Future<Output = Result<PoolConnection<DB>, Error>> + 'static {
+    pub fn acquire(&self) -> impl Future<Output=Result<PoolConnection<DB>, Error>> + 'static {
         let shared = self.0.clone();
         async move { shared.acquire().await.map(|conn| conn.reattach()) }
     }
@@ -388,7 +376,7 @@ impl<DB: Database> Pool<DB> {
     /// spawned by `Pool` internally and so may be unpredictable otherwise.
     ///
     /// `.close()` may be safely called and `.await`ed on multiple handles concurrently.
-    pub fn close(&self) -> impl Future<Output = ()> + '_ {
+    pub fn close(&self) -> impl Future<Output=()> + '_ {
         self.0.close()
     }
 
@@ -504,7 +492,6 @@ impl<DB: Database> Pool<DB> {
     any(
         feature = "postgres",
         feature = "mysql",
-        feature = "mssql",
         feature = "sqlite"
     ),
     feature = "any"
@@ -567,7 +554,7 @@ impl CloseEvent {
             // is not allowed on stable Rust yet.
             self.poll_unpin(cx).map(|_| Err(Error::PoolClosed))
         })
-        .await
+            .await
     }
 }
 

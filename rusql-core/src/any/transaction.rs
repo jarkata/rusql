@@ -27,11 +27,6 @@ impl TransactionManager for AnyTransactionManager {
             AnyConnectionKind::Sqlite(conn) => {
                 <crate::sqlite::Sqlite as Database>::TransactionManager::begin(conn)
             }
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => {
-                <crate::mssql::Mssql as Database>::TransactionManager::begin(conn)
-            }
         }
     }
 
@@ -52,10 +47,6 @@ impl TransactionManager for AnyTransactionManager {
                 <crate::sqlite::Sqlite as Database>::TransactionManager::commit(conn)
             }
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => {
-                <crate::mssql::Mssql as Database>::TransactionManager::commit(conn)
-            }
         }
     }
 
@@ -76,10 +67,6 @@ impl TransactionManager for AnyTransactionManager {
                 <crate::sqlite::Sqlite as Database>::TransactionManager::rollback(conn)
             }
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => {
-                <crate::mssql::Mssql as Database>::TransactionManager::rollback(conn)
-            }
         }
     }
 
@@ -100,10 +87,6 @@ impl TransactionManager for AnyTransactionManager {
                 <crate::sqlite::Sqlite as Database>::TransactionManager::start_rollback(conn)
             }
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => {
-                <crate::mssql::Mssql as Database>::TransactionManager::start_rollback(conn)
-            }
         }
     }
 }

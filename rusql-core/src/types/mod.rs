@@ -6,7 +6,6 @@
 //!  * [PostgreSQL](crate::postgres::types)
 //!  * [MySQL](crate::mysql::types)
 //!  * [SQLite](crate::sqlite::types)
-//!  * [MSSQL](crate::mssql::types)
 //!
 //! Any external types that have had [`Type`] implemented for, are re-exported in this module
 //! for convenience as downstream users need to use a compatible version of the external crate

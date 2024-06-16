@@ -18,8 +18,6 @@ use crate::mysql::MySqlRow;
 #[cfg(feature = "sqlite")]
 use crate::sqlite::SqliteRow;
 
-#[cfg(feature = "mssql")]
-use crate::mssql::MssqlRow;
 
 pub struct AnyRow {
     pub(crate) kind: AnyRowKind,
@@ -37,9 +35,6 @@ pub(crate) enum AnyRowKind {
 
     #[cfg(feature = "sqlite")]
     Sqlite(SqliteRow),
-
-    #[cfg(feature = "mssql")]
-    Mssql(MssqlRow),
 }
 
 impl Row for AnyRow {
@@ -67,9 +62,6 @@ impl Row for AnyRow {
 
             #[cfg(feature = "sqlite")]
             AnyRowKind::Sqlite(row) => row.try_get_raw(index).map(Into::into),
-
-            #[cfg(feature = "mssql")]
-            AnyRowKind::Mssql(row) => row.try_get_raw(index).map(Into::into),
         }
     }
 
@@ -107,9 +99,6 @@ where
 
             #[cfg(feature = "sqlite")]
             AnyRowKind::Sqlite(row) => self.index(row),
-
-            #[cfg(feature = "mssql")]
-            AnyRowKind::Mssql(row) => self.index(row),
         }
     }
 }

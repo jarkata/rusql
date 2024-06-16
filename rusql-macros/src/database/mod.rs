@@ -97,6 +97,3 @@ mod mysql;
 
 #[cfg(feature = "sqlite")]
 mod sqlite;
-
-#[cfg(feature = "mssql")]
-mod mssql;

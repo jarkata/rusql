@@ -16,8 +16,6 @@ use crate::mysql::MySqlConnectOptions;
 use crate::sqlite::SqliteConnectOptions;
 
 use crate::any::kind::AnyKind;
-#[cfg(feature = "mssql")]
-use crate::mssql::MssqlConnectOptions;
 
 /// Opaque options for connecting to a database. These may only be constructed by parsing from
 /// a connection url.
@@ -40,9 +38,6 @@ impl AnyConnectOptions {
 
             #[cfg(feature = "sqlite")]
             AnyConnectOptionsKind::Sqlite(_) => AnyKind::Sqlite,
-
-            #[cfg(feature = "mssql")]
-            AnyConnectOptionsKind::Mssql(_) => AnyKind::Mssql,
         }
     }
 }
@@ -105,9 +100,6 @@ try_from_any_connect_options_to!(
     "sqlite"
 );
 
-#[cfg(feature = "mssql")]
-try_from_any_connect_options_to!(MssqlConnectOptions, AnyConnectOptionsKind::Mssql, "mssql");
-
 #[derive(Debug, Clone)]
 pub(crate) enum AnyConnectOptionsKind {
     #[cfg(feature = "postgres")]
@@ -118,9 +110,6 @@ pub(crate) enum AnyConnectOptionsKind {
 
     #[cfg(feature = "sqlite")]
     Sqlite(SqliteConnectOptions),
-
-    #[cfg(feature = "mssql")]
-    Mssql(MssqlConnectOptions),
 }
 
 #[cfg(feature = "postgres")]
@@ -144,13 +133,6 @@ impl From<SqliteConnectOptions> for AnyConnectOptions {
     }
 }
 
-#[cfg(feature = "mssql")]
-impl From<MssqlConnectOptions> for AnyConnectOptions {
-    fn from(options: MssqlConnectOptions) -> Self {
-        Self(AnyConnectOptionsKind::Mssql(options))
-    }
-}
-
 impl FromStr for AnyConnectOptions {
     type Err = Error;
 
@@ -168,9 +150,6 @@ impl FromStr for AnyConnectOptions {
             AnyKind::Sqlite => {
                 SqliteConnectOptions::from_str(url).map(AnyConnectOptionsKind::Sqlite)
             }
-
-            #[cfg(feature = "mssql")]
-            AnyKind::Mssql => MssqlConnectOptions::from_str(url).map(AnyConnectOptionsKind::Mssql),
         }
         .map(AnyConnectOptions)
     }
@@ -200,11 +179,6 @@ impl ConnectOptions for AnyConnectOptions {
             AnyConnectOptionsKind::Sqlite(o) => {
                 o.log_statements(level);
             }
-
-            #[cfg(feature = "mssql")]
-            AnyConnectOptionsKind::Mssql(o) => {
-                o.log_statements(level);
-            }
         };
         self
     }
@@ -226,10 +200,6 @@ impl ConnectOptions for AnyConnectOptions {
                 o.log_slow_statements(level, duration);
             }
 
-            #[cfg(feature = "mssql")]
-            AnyConnectOptionsKind::Mssql(o) => {
-                o.log_slow_statements(level, duration);
-            }
         };
         self
     }

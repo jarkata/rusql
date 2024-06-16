@@ -19,9 +19,6 @@ impl MigrateDatabase for Any {
 
                 #[cfg(feature = "mysql")]
                 AnyKind::MySql => crate::mysql::MySql::create_database(url).await,
-
-                #[cfg(feature = "mssql")]
-                AnyKind::Mssql => unimplemented!(),
             }
         })
     }
@@ -37,9 +34,6 @@ impl MigrateDatabase for Any {
 
                 #[cfg(feature = "mysql")]
                 AnyKind::MySql => crate::mysql::MySql::database_exists(url).await,
-
-                #[cfg(feature = "mssql")]
-                AnyKind::Mssql => unimplemented!(),
             }
         })
     }
@@ -55,9 +49,6 @@ impl MigrateDatabase for Any {
 
                 #[cfg(feature = "mysql")]
                 AnyKind::MySql => crate::mysql::MySql::drop_database(url).await,
-
-                #[cfg(feature = "mssql")]
-                AnyKind::Mssql => unimplemented!(),
             }
         })
     }
@@ -74,9 +65,7 @@ impl Migrate for AnyConnection {
 
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.ensure_migrations_table(),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -91,9 +80,7 @@ impl Migrate for AnyConnection {
 
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.version(),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -108,8 +95,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.dirty_version(),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -128,8 +114,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.validate(migration),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => {
+            _ => {
                 let _ = migration;
                 unimplemented!()
             }
@@ -149,8 +134,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.list_applied_migrations(),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -165,8 +149,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.lock(),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -181,8 +164,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.unlock(),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => unimplemented!(),
+            _ => unimplemented!(),
         }
     }
 
@@ -200,11 +182,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.apply(migration),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => {
-                let _ = migration;
-                unimplemented!()
-            }
+            _ => unimplemented!(),
         }
     }
 
@@ -222,11 +200,7 @@ impl Migrate for AnyConnection {
             #[cfg(feature = "mysql")]
             AnyConnectionKind::MySql(conn) => conn.revert(migration),
 
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_conn) => {
-                let _ = migration;
-                unimplemented!()
-            }
+            _ => unimplemented!(),
         }
     }
 }

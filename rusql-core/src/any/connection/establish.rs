@@ -27,13 +27,6 @@ impl AnyConnection {
                     .await
                     .map(AnyConnectionKind::Sqlite)
             }
-
-            #[cfg(feature = "mssql")]
-            AnyConnectOptionsKind::Mssql(options) => {
-                crate::mssql::MssqlConnection::connect_with(options)
-                    .await
-                    .map(AnyConnectionKind::Mssql)
-            }
         }
         .map(AnyConnection)
     }

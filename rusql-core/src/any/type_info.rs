@@ -11,9 +11,6 @@ use crate::mysql::MySqlTypeInfo;
 #[cfg(feature = "sqlite")]
 use crate::sqlite::SqliteTypeInfo;
 
-#[cfg(feature = "mssql")]
-use crate::mssql::MssqlTypeInfo;
-
 #[derive(Debug, Clone, PartialEq)]
 pub struct AnyTypeInfo(pub(crate) AnyTypeInfoKind);
 
@@ -27,9 +24,6 @@ pub(crate) enum AnyTypeInfoKind {
 
     #[cfg(feature = "sqlite")]
     Sqlite(SqliteTypeInfo),
-
-    #[cfg(feature = "mssql")]
-    Mssql(MssqlTypeInfo),
 }
 
 impl TypeInfo for AnyTypeInfo {
@@ -43,9 +37,6 @@ impl TypeInfo for AnyTypeInfo {
 
             #[cfg(feature = "sqlite")]
             AnyTypeInfoKind::Sqlite(ty) => ty.is_null(),
-
-            #[cfg(feature = "mssql")]
-            AnyTypeInfoKind::Mssql(ty) => ty.is_null(),
         }
     }
 
@@ -59,9 +50,6 @@ impl TypeInfo for AnyTypeInfo {
 
             #[cfg(feature = "sqlite")]
             AnyTypeInfoKind::Sqlite(ty) => ty.name(),
-
-            #[cfg(feature = "mssql")]
-            AnyTypeInfoKind::Mssql(ty) => ty.name(),
         }
     }
 }
@@ -77,9 +65,6 @@ impl Display for AnyTypeInfo {
 
             #[cfg(feature = "sqlite")]
             AnyTypeInfoKind::Sqlite(ty) => ty.fmt(f),
-
-            #[cfg(feature = "mssql")]
-            AnyTypeInfoKind::Mssql(ty) => ty.fmt(f),
         }
     }
 }

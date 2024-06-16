@@ -41,7 +41,7 @@ impl<DB: Database> Describe<DB> {
     ///
     /// Some drivers may return more or less than others. As an example, **PostgreSQL** will
     /// return `Some(Either::Left(_))` with a full list of type information for each parameter.
-    /// However, **MSSQL** will return `None` as there is no information available.
+    /// However, **Other** will return `None` as there is no information available.
     pub fn parameters(&self) -> Option<Either<&[DB::TypeInfo], usize>> {
         self.parameters.as_ref().map(|p| match p {
             Either::Left(params) => Either::Left(&**params),

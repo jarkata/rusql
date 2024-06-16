@@ -10,9 +10,6 @@ use crate::postgres;
 #[cfg(feature = "sqlite")]
 use crate::sqlite;
 
-#[cfg(feature = "mssql")]
-use crate::mssql;
-
 #[cfg(feature = "mysql")]
 use crate::mysql;
 use crate::transaction::Transaction;
@@ -39,9 +36,6 @@ pub enum AnyConnectionKind {
     #[cfg(feature = "postgres")]
     Postgres(postgres::PgConnection),
 
-    #[cfg(feature = "mssql")]
-    Mssql(mssql::MssqlConnection),
-
     #[cfg(feature = "mysql")]
     MySql(mysql::MySqlConnection),
 
@@ -60,9 +54,6 @@ impl AnyConnectionKind {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(_) => AnyKind::Sqlite,
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_) => AnyKind::Mssql,
         }
     }
 }
@@ -90,9 +81,6 @@ macro_rules! delegate_to {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.$method($($arg),*),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => conn.$method($($arg),*),
         }
     };
 }
@@ -108,9 +96,6 @@ macro_rules! delegate_to_mut {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.$method($($arg),*),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => conn.$method($($arg),*),
         }
     };
 }
@@ -130,9 +115,6 @@ impl Connection for AnyConnection {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.close(),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => conn.close(),
         }
     }
 
@@ -146,9 +128,6 @@ impl Connection for AnyConnection {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.close_hard(),
-
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(conn) => conn.close_hard(),
         }
     }
 
@@ -173,10 +152,6 @@ impl Connection for AnyConnection {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.cached_statements_size(),
-
-            // no cache
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_) => 0,
         }
     }
 
@@ -190,10 +165,6 @@ impl Connection for AnyConnection {
 
             #[cfg(feature = "sqlite")]
             AnyConnectionKind::Sqlite(conn) => conn.clear_cached_statements(),
-
-            // no cache
-            #[cfg(feature = "mssql")]
-            AnyConnectionKind::Mssql(_) => Box::pin(futures_util::future::ok(())),
         }
     }
 
@@ -212,13 +183,6 @@ impl Connection for AnyConnection {
 impl From<postgres::PgConnection> for AnyConnection {
     fn from(conn: postgres::PgConnection) -> Self {
         AnyConnection(AnyConnectionKind::Postgres(conn))
-    }
-}
-
-#[cfg(feature = "mssql")]
-impl From<mssql::MssqlConnection> for AnyConnection {
-    fn from(conn: mssql::MssqlConnection) -> Self {
-        AnyConnection(AnyConnectionKind::Mssql(conn))
     }
 }
 

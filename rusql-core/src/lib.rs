@@ -80,7 +80,6 @@ pub mod migrate;
     any(
         feature = "postgres",
         feature = "mysql",
-        feature = "mssql",
         feature = "sqlite"
     ),
     feature = "any"
@@ -98,8 +97,6 @@ pub mod sqlite;
 #[cfg(feature = "mysql")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mysql")))]
 pub mod mysql;
-
-pub use rusql_rt::test_block_on;
 
 /// rusql uses ahash for increased performance, at the cost of reduced DoS resistance.
 use ahash::AHashMap as HashMap;

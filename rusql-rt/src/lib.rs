@@ -14,17 +14,17 @@ compile_error!(
      'runtime-tokio-rustls'] must be enabled"
 );
 
-#[cfg(any(
-    all(feature = "_rt-actix", feature = "_rt-async-std"),
-    all(feature = "_rt-actix", feature = "_rt-tokio"),
-    all(feature = "_rt-async-std", feature = "_rt-tokio"),
-    all(feature = "_tls-native-tls", feature = "_tls-rustls"),
-))]
-compile_error!(
-    "only one of ['runtime-actix-native-tls', 'runtime-async-std-native-tls', \
-     'runtime-tokio-native-tls', 'runtime-actix-rustls', 'runtime-async-std-rustls', \
-     'runtime-tokio-rustls'] can be enabled"
-);
+// #[cfg(any(
+//     all(feature = "_rt-actix", feature = "_rt-async-std"),
+//     all(feature = "_rt-actix", feature = "_rt-tokio"),
+//     all(feature = "_rt-async-std", feature = "_rt-tokio"),
+//     all(feature = "_tls-native-tls", feature = "_tls-rustls"),
+// ))]
+// compile_error!(
+//     "only one of ['runtime-actix-native-tls', 'runtime-async-std-native-tls', \
+//      'runtime-tokio-native-tls', 'runtime-actix-rustls', 'runtime-async-std-rustls', \
+//      'runtime-tokio-rustls'] can be enabled"
+// );
 
 #[cfg(feature = "_rt-async-std")]
 mod rt_async_std;

@@ -18,9 +18,6 @@ use crate::mysql::{MySqlValue, MySqlValueRef};
 #[cfg(feature = "sqlite")]
 use crate::sqlite::{SqliteValue, SqliteValueRef};
 
-#[cfg(feature = "mssql")]
-use crate::mssql::{MssqlValue, MssqlValueRef};
-
 pub struct AnyValue {
     pub(crate) kind: AnyValueKind,
     pub(crate) type_info: AnyTypeInfo,
@@ -35,9 +32,6 @@ pub(crate) enum AnyValueKind {
 
     #[cfg(feature = "sqlite")]
     Sqlite(SqliteValue),
-
-    #[cfg(feature = "mssql")]
-    Mssql(MssqlValue),
 }
 
 pub struct AnyValueRef<'r> {
@@ -54,9 +48,6 @@ pub(crate) enum AnyValueRefKind<'r> {
 
     #[cfg(feature = "sqlite")]
     Sqlite(SqliteValueRef<'r>),
-
-    #[cfg(feature = "mssql")]
-    Mssql(MssqlValueRef<'r>),
 }
 
 impl Value for AnyValue {
@@ -73,8 +64,6 @@ impl Value for AnyValue {
             #[cfg(feature = "sqlite")]
             AnyValueKind::Sqlite(value) => value.as_ref().into(),
 
-            #[cfg(feature = "mssql")]
-            AnyValueKind::Mssql(value) => value.as_ref().into(),
         }
     }
 
@@ -93,8 +82,6 @@ impl Value for AnyValue {
             #[cfg(feature = "sqlite")]
             AnyValueKind::Sqlite(value) => value.is_null(),
 
-            #[cfg(feature = "mssql")]
-            AnyValueKind::Mssql(value) => value.is_null(),
         }
     }
 
@@ -128,8 +115,6 @@ impl<'r> ValueRef<'r> for AnyValueRef<'r> {
             #[cfg(feature = "sqlite")]
             AnyValueRefKind::Sqlite(value) => ValueRef::to_owned(value).into(),
 
-            #[cfg(feature = "mssql")]
-            AnyValueRefKind::Mssql(value) => ValueRef::to_owned(value).into(),
         }
     }
 
@@ -148,8 +133,6 @@ impl<'r> ValueRef<'r> for AnyValueRef<'r> {
             #[cfg(feature = "sqlite")]
             AnyValueRefKind::Sqlite(value) => value.is_null(),
 
-            #[cfg(feature = "mssql")]
-            AnyValueRefKind::Mssql(value) => value.is_null(),
         }
     }
 }

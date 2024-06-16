@@ -55,7 +55,6 @@ offline = ["rusql-core/offline", "hex", "serde", "serde_json", "sha2"]
 mysql = ["rusql-core/mysql"]
 postgres = ["rusql-core/postgres"]
 sqlite = ["rusql-core/sqlite"]
-mssql = ["rusql-core/mssql"]
 
 # type
 bigdecimal = ["rusql-core/bigdecimal"]

@@ -11,6 +11,7 @@ authors = [
 ]
 
 [features]
+default = ["runtime-tokio-native-tls"]
 runtime-actix-native-tls = ["runtime-tokio-native-tls"]
 runtime-async-std-native-tls = [
     "_rt-async-std",

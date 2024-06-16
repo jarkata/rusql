@@ -77,19 +77,19 @@ static METADATA: Lazy<Metadata> = Lazy::new(|| {
         .into();
 
     #[cfg(feature = "offline")]
-    let package_name: String = env("CARGO_PKG_NAME")
+        let package_name: String = env("CARGO_PKG_NAME")
         .expect("`CARGO_PKG_NAME` must be set")
         .into();
 
     #[cfg(feature = "offline")]
-    let target_dir = env("CARGO_TARGET_DIR").map_or_else(|_| "target".into(), |dir| dir.into());
+        let target_dir = env("CARGO_TARGET_DIR").map_or_else(|_| "target".into(), |dir| dir.into());
 
     // If a .env file exists at CARGO_MANIFEST_DIR, load environment variables from this,
     // otherwise fallback to default dotenv behaviour.
     let env_path = manifest_dir.join(".env");
 
     #[cfg_attr(not(procmacro2_semver_exempt), allow(unused_variables))]
-    let env_path = if env_path.exists() {
+        let env_path = if env_path.exists() {
         let res = dotenvy::from_path(&env_path);
         if let Err(e) = res {
             panic!("failed to load environment from {:?}, {}", env_path, e);
@@ -130,7 +130,6 @@ pub fn expand_input(input: QueryMacroInput) -> crate::Result<TokenStream> {
         #[cfg(not(any(
             feature = "postgres",
             feature = "mysql",
-            feature = "mssql",
             feature = "sqlite"
         )))]
         Metadata {
@@ -138,15 +137,14 @@ pub fn expand_input(input: QueryMacroInput) -> crate::Result<TokenStream> {
             database_url: Some(db_url),
             ..
         } => Err(
-            "At least one of the features ['postgres', 'mysql', 'mssql', 'sqlite'] must be enabled \
+            "At least one of the features ['postgres', 'mysql', 'sqlite'] must be enabled \
             to get information directly from a database"
-            .into(),
+                .into(),
         ),
 
         #[cfg(any(
             feature = "postgres",
             feature = "mysql",
-            feature = "mssql",
             feature = "sqlite"
         ))]
         Metadata {
@@ -192,7 +190,6 @@ pub fn expand_input(input: QueryMacroInput) -> crate::Result<TokenStream> {
 #[cfg(any(
     feature = "postgres",
     feature = "mysql",
-    feature = "mssql",
     feature = "sqlite"
 ))]
 fn expand_from_db(input: QueryMacroInput, db_url: &str) -> crate::Result<TokenStream> {
@@ -230,11 +227,6 @@ fn expand_from_db(input: QueryMacroInput, db_url: &str) -> crate::Result<TokenSt
         match conn_item.private_get_mut() {
             #[cfg(feature = "postgres")]
             rusql_core::any::AnyConnectionKind::Postgres(conn) => {
-                let data = QueryData::from_db(conn, &input.sql).await?;
-                expand_with_data(input, data, false)
-            }
-            #[cfg(feature = "mssql")]
-            rusql_core::any::AnyConnectionKind::Mssql(conn) => {
                 let data = QueryData::from_db(conn, &input.sql).await?;
                 expand_with_data(input, data, false)
             }
@@ -282,7 +274,7 @@ pub fn expand_from_file(input: QueryMacroInput, file: PathBuf) -> crate::Result<
             "found query data for {} but the feature for that database was not enabled",
             query_data.db_name
         )
-        .into()),
+            .into()),
     }
 }
 
@@ -293,8 +285,7 @@ trait DescribeExt: serde::Serialize + serde::de::DeserializeOwned {}
 #[cfg(feature = "offline")]
 impl<DB: Database> DescribeExt for Describe<DB> where
     Describe<DB>: serde::Serialize + serde::de::DeserializeOwned
-{
-}
+{}
 
 #[cfg(not(feature = "offline"))]
 trait DescribeExt {}
@@ -307,8 +298,8 @@ fn expand_with_data<DB: DatabaseExt>(
     data: QueryData<DB>,
     #[allow(unused_variables)] offline: bool,
 ) -> crate::Result<TokenStream>
-where
-    Describe<DB>: DescribeExt,
+    where
+        Describe<DB>: DescribeExt,
 {
     // validate at the minimum that our args match the query's input parameters
     let num_parameters = match data.describe.parameters() {
@@ -361,10 +352,10 @@ where
 
                 let record_fields = columns.iter().map(
                     |&output::RustColumn {
-                         ref ident,
-                         ref type_,
-                         ..
-                     }| quote!(#ident: #type_,),
+                        ref ident,
+                        ref type_,
+                        ..
+                    }| quote!(#ident: #type_,),
                 );
 
                 let mut record_tokens = quote! {

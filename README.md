@@ -72,7 +72,7 @@ RuSQL is an async, pure Rust<sub>†</sub> SQL crate featuring compile-time chec
 
 -   **Compile-time checked queries** (if you want). See [RuSQL is not an ORM](#rusql-is-not-an-orm).
 
--   **Database Agnostic**. Support for [PostgreSQL], [MySQL], [SQLite], and [MSSQL].
+-   **Database Agnostic**. Support for [PostgreSQL], [MySQL], [SQLite]
 
 -   **Pure Rust**. The Postgres and MySQL/MariaDB drivers are written in pure Rust using **zero** unsafe<sub>††</sub> code.
 
@@ -91,8 +91,6 @@ with C, those interactions are `unsafe`.
 [postgresql]: http://postgresql.org/
 [sqlite]: https://sqlite.org/
 [mysql]: https://www.mysql.com/
-[mssql]: https://www.microsoft.com/en-us/sql-server
-
 ---
 
 -   Cross-platform. Being native Rust, RuSQL will compile anywhere Rust is supported.
@@ -153,8 +151,6 @@ rusql = { version = "0.6", features = [ "runtime-async-std-native-tls" ] }
 -   `postgres`: Add support for the Postgres database server.
 
 -   `mysql`: Add support for the MySQL/MariaDB database server.
-
--   `mssql`: Add support for the MSSQL database server.
 
 -   `sqlite`: Add support for the self-contained [SQLite](https://sqlite.org/) database engine.
 

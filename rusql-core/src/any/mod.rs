@@ -77,9 +77,6 @@ where
             #[cfg(feature = "mysql")]
             arguments::AnyArgumentBufferKind::MySql(args, _) => args.add(self),
 
-            #[cfg(feature = "mssql")]
-            arguments::AnyArgumentBufferKind::Mssql(args, _) => args.add(self),
-
             #[cfg(feature = "sqlite")]
             arguments::AnyArgumentBufferKind::Sqlite(args) => args.add(self),
         }

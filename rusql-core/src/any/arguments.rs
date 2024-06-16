@@ -40,12 +40,6 @@ pub(crate) enum AnyArgumentBufferKind<'q> {
 
     #[cfg(feature = "sqlite")]
     Sqlite(crate::sqlite::SqliteArguments<'q>),
-
-    #[cfg(feature = "mssql")]
-    Mssql(
-        crate::mssql::MssqlArguments,
-        std::marker::PhantomData<&'q ()>,
-    ),
 }
 
 // control flow inferred type bounds would be fun
@@ -90,26 +84,6 @@ impl<'q> From<AnyArguments<'q>> for crate::mysql::MySqlArguments {
     }
 }
 
-#[cfg(feature = "mssql")]
-#[allow(irrefutable_let_patterns)]
-impl<'q> From<AnyArguments<'q>> for crate::mssql::MssqlArguments {
-    fn from(args: AnyArguments<'q>) -> Self {
-        let mut buf = AnyArgumentBuffer(AnyArgumentBufferKind::Mssql(
-            Default::default(),
-            std::marker::PhantomData,
-        ));
-
-        for value in args.values {
-            let _ = value.encode_by_ref(&mut buf);
-        }
-
-        if let AnyArgumentBufferKind::Mssql(args, _) = buf.0 {
-            args
-        } else {
-            unreachable!()
-        }
-    }
-}
 
 #[cfg(feature = "postgres")]
 #[allow(irrefutable_let_patterns)]
