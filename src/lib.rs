@@ -1,11 +1,11 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-#[cfg(any(feature = "runtime-async-std", feature = "runtime-tokio"))]
-compile_error!(
-    "the features 'runtime-actix', 'runtime-async-std' and 'runtime-tokio' have been removed in
-     favor of new features 'runtime-{rt}-{tls}' where rt is one of 'actix', 'async-std' and 'tokio'
-     and 'tls' is one of 'native-tls' and 'rustls'."
-);
+// #[cfg(any(feature = "runtime-async-std", feature = "runtime-tokio"))]
+// compile_error!(
+//     "the features 'runtime-actix', 'runtime-async-std' and 'runtime-tokio' have been removed in
+//      favor of new features 'runtime-{rt}-{tls}' where rt is one of 'async-std' and 'tokio'
+//      and 'tls' is one of 'native-tls' and 'rustls'."
+// );
 
 pub use rusql_core::acquire::Acquire;
 pub use rusql_core::arguments::{Arguments, IntoArguments};
@@ -17,7 +17,7 @@ pub use rusql_core::describe::Describe;
 pub use rusql_core::executor::{Execute, Executor};
 pub use rusql_core::from_row::FromRow;
 pub use rusql_core::pool::{self, Pool};
-pub use rusql_core::query::{query, query_with};
+pub use rusql_core::query::{query, query_with, execute_update};
 pub use rusql_core::query_as::{query_as, query_as_with};
 pub use rusql_core::query_builder::{self, QueryBuilder};
 pub use rusql_core::query_scalar::{query_scalar, query_scalar_with};
