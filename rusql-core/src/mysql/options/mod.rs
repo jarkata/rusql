@@ -1,5 +1,4 @@
 use std::path::{Path, PathBuf};
-use serde::de::Unexpected::Option;
 
 mod connect;
 mod parse;
