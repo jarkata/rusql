@@ -41,6 +41,8 @@ impl ConnectOptions for MySqlConnectOptions {
 
             // https://mathiasbynens.be/notes/mysql-utf8mb4
 
+            let this_options = self.clone();
+
             let mut options = String::new();
             if self.pipes_as_concat {
                 options.push_str(r#"SET sql_mode=(SELECT CONCAT(@@sql_mode, ',PIPES_AS_CONCAT,NO_ENGINE_SUBSTITUTION')),"#);
@@ -49,9 +51,7 @@ impl ConnectOptions for MySqlConnectOptions {
                     r#"SET sql_mode=(SELECT CONCAT(@@sql_mode, ',NO_ENGINE_SUBSTITUTION')),"#,
                 );
             }
-
-
-            let timezone = "+08:00";
+            let timezone = this_options.time_zone;
             options.push_str(&format!(r#"time_zone='{}',"#, timezone));
             options.push_str(&format!(
                 r#"NAMES {} COLLATE {};"#,
