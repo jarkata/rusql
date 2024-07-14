@@ -48,7 +48,7 @@ impl Type<MySql> for DateTime<Local> {
 /// Note: assumes the connection's `time_zone` is set to `+00:00` (UTC).
 impl Encode<'_, MySql> for DateTime<Local> {
     fn encode_by_ref(&self, buf: &mut Vec<u8>) -> IsNull {
-        Encode::<MySql>::encode(&self.naive_utc(), buf)
+        Encode::<MySql>::encode(&self.naive_local(), buf)
     }
 }
 
