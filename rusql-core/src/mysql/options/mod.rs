@@ -66,7 +66,7 @@ pub struct MySqlConnectOptions {
     pub(crate) collation: Option<String>,
     pub(crate) log_settings: LogSettings,
     pub(crate) pipes_as_concat: bool,
-    pub(crate) time_zone: Option<String>,
+    pub(crate) time_zone: String,
 }
 
 impl Default for MySqlConnectOptions {
@@ -93,7 +93,7 @@ impl MySqlConnectOptions {
             log_settings: Default::default(),
             pipes_as_concat: true,
             //默认时区
-            time_zone: Option::from(String::from("+08:00")),
+            time_zone: String::from("+08:00"),
         }
     }
 
