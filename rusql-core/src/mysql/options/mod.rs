@@ -1,4 +1,5 @@
 use std::path::{Path, PathBuf};
+use serde::de::Unexpected::Option;
 
 mod connect;
 mod parse;
@@ -66,6 +67,7 @@ pub struct MySqlConnectOptions {
     pub(crate) collation: Option<String>,
     pub(crate) log_settings: LogSettings,
     pub(crate) pipes_as_concat: bool,
+    pub(crate) time_zone: Option<String>,
 }
 
 impl Default for MySqlConnectOptions {
@@ -91,6 +93,8 @@ impl MySqlConnectOptions {
             statement_cache_capacity: 100,
             log_settings: Default::default(),
             pipes_as_concat: true,
+            //默认时区
+            time_zone: Option::from(String::from("+08:00")),
         }
     }
 

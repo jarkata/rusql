@@ -10,8 +10,8 @@ impl ConnectOptions for MySqlConnectOptions {
     type Connection = MySqlConnection;
 
     fn connect(&self) -> BoxFuture<'_, Result<Self::Connection, Error>>
-    where
-        Self::Connection: Sized,
+        where
+            Self::Connection: Sized,
     {
         Box::pin(async move {
             let mut conn = MySqlConnection::establish(self).await?;
@@ -49,7 +49,10 @@ impl ConnectOptions for MySqlConnectOptions {
                     r#"SET sql_mode=(SELECT CONCAT(@@sql_mode, ',NO_ENGINE_SUBSTITUTION')),"#,
                 );
             }
-            options.push_str(r#"time_zone='+00:00',"#);
+
+
+            let timezone = self.time_zone;
+            options.push_str(&format!(r#"time_zone='{}',"#, timezone));
             options.push_str(&format!(
                 r#"NAMES {} COLLATE {};"#,
                 conn.stream.charset.as_str(),
