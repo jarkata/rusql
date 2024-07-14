@@ -227,4 +227,9 @@ impl MySqlConnectOptions {
         self.pipes_as_concat = flag_val;
         self
     }
+
+    pub fn time_zone(mut self, time_zone: String) -> Self {
+        self.time_zone = time_zone;
+        self
+    }
 }

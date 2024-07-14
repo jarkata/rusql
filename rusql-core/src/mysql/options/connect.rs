@@ -51,7 +51,7 @@ impl ConnectOptions for MySqlConnectOptions {
             }
 
 
-            let timezone = self.time_zone;
+            let timezone = "+08:00";
             options.push_str(&format!(r#"time_zone='{}',"#, timezone));
             options.push_str(&format!(
                 r#"NAMES {} COLLATE {};"#,
